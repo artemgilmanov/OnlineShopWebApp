@@ -1,0 +1,23 @@
+﻿@model List<Product>
+
+<div class="container-fluid">
+    <div class="row">
+        @foreach (var product in Model)
+        {
+        <div class="card-group">
+            <div class="card">
+              <div class="card-header bg-transparent">@product.Name</div>
+                <img src=@product.ImagePath class="card-img-top" alt="Image of a product.">
+                <div class="card-body">
+                    <h5 class="card-title">@product.Description</h5>
+                    <p class="card-text">@product.Description</p>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">@product.Cost</small>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+
