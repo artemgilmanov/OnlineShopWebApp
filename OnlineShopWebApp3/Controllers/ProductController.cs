@@ -1,12 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace OnlineShopWebApp3.Controllers
 {
     public class ProductController : Controller
     {
-        public IActionResult Index()
+        //private readonly ProductsRepository productsRepository;
+
+        //public ProductController()
+        //{
+        //    productsRepository = new ProductsRepository();
+        //}
+
+        public IActionResult Index(Guid id)
         {
-            return View();
+            var product = ProductsRepository.TryGetById(id);
+            return View(product);
         }
     }
 }

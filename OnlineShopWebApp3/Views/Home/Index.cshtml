@@ -6,8 +6,8 @@
         {
         <div class="card-group">
             <div class="card">
-              <div class="card-header bg-transparent">@product.Name</div>
-                <img src=@product.ImagePath class="card-img-top" alt="Image of a product.">
+              <a class="card-header bg-transparent" href="/product/index?id=@product.Id">@product.Name</a>
+                    <img src=@product.ImagePath class="card-img-top" href="#" alt="Image of a product.">
                 <div class="card-body">
                     <h5 class="card-title">@product.Description</h5>
                     <p class="card-text">@product.Description</p>

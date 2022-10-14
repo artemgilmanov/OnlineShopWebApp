@@ -1,0 +1,42 @@
+﻿@model Cart
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div calss="col">
+        <div class="table-responsive">
+
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Summ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Items)
+                    {
+                        <tr>
+                            <td>@item.Product.Name</td>
+                            <td>@item.Product.Cost</td>
+                            <td>@item.Amount</td>
+                            <td>@item.Cost</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="text-right">
+                <h3>Total: @Model.TotalCost</h3>
+            </div>
+            <div>
+                <a class="btn btn-danger" href="/home/index" role="button">Explore</a>
+                <a class="btn btn-danger" href="#" role="button">Check out</a>
+            </div>
+        </div>
+    </div>
+</div>
