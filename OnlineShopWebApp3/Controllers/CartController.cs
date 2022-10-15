@@ -5,12 +5,7 @@ namespace OnlineShopWebApp3.Controllers
 {
     public class CartController : Controller
     {
-        //private readonly ProductsRepository productsRepository;
-
-        //public CartController()
-        //{
-        //    productsRepository = new ProductsRepository();
-        //}
+        
         public IActionResult Index()
         {
             var cart = CartsRepository.TryGetByUserId(Constants.UserId);

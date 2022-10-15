@@ -24,7 +24,6 @@ namespace OnlineShopWebApp3
                 var newCart = new Cart()
                 {
                     Id = Guid.NewGuid(),
-                    Product = ProductsRepository.TryGetById(productId),
                     UserId = userId,
                     Items = new List<CartItem>()
                     {

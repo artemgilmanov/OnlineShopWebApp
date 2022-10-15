@@ -1,23 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using OnlineShopWebApp3.Models;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace OnlineShopWebApp3.Controllers
 {
     public class HomeController : Controller
     {
-        //private readonly ProductsRepository productsRepository;
-
-        //public HomeController()
-        //{
-        //    productsRepository = new ProductsRepository();
-        //}
-
+        
         public IActionResult Index()
         {
             var products = ProductsRepository.GetAll();
