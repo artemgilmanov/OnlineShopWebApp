@@ -42,9 +42,9 @@ namespace OnlineShopWebApp3
             {
                 var existingCartItem = existingCart.Items.FirstOrDefault(x => x.Product.Id == productId);
 
-                if (existingCartItem!=null)
+                if (existingCartItem != null)
                 {
-                    existingCart.TryGetByProductId(productId).Amount += 1;
+                    existingCartItem.Amount += 1;
                 }
                 else
                 {

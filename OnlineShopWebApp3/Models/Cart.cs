@@ -17,12 +17,5 @@ namespace OnlineShopWebApp3.Models
             }
                  
         }
-      
-        public CartItem TryGetByProductId(Guid productId)
-        {
-            var item = Items.FirstOrDefault(x => x.Product.Id == productId);
-            return item;
-        }
-
     }
 }
