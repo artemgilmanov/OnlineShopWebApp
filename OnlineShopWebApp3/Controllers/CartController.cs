@@ -41,16 +41,16 @@ namespace OnlineShopWebApp3.Controllers
             _cartsRepository.AddToCart(product, Constants.UserId);
             return RedirectToAction(nameof(Index));
         }
-
-        //public IActionResult IncreaseItemAmount(Guid itemId)
-        //{
-        //    _cartsRepository.IncreaseItemAmount(itemId);
-        //    return RedirectToAction(nameof(Index));
-        //}
-
+       
         public IActionResult RemoveFromCart(Guid itemId)
         {
             _cartsRepository.RemoveFromCart(itemId);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Clear()
+        {
+            _cartsRepository.Clear();
             return RedirectToAction(nameof(Index));
         }
     }

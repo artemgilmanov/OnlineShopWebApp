@@ -75,5 +75,11 @@ namespace OnlineShopWebApp3
                 Carts.Remove(existingCart);
             }
         }
+
+        void ICartsRepository.Clear()
+        {
+            var existingCart = TryGetByUserId(Constants.UserId);
+            Carts.Remove(existingCart);
+        }
     }
 }
