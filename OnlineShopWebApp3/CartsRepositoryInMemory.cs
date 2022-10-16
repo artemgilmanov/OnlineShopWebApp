@@ -5,21 +5,21 @@ using System.Linq;
 
 namespace OnlineShopWebApp3
 {
-    public static class CartsRepository
+    public class CartsRepositoryInMemory : ICartsRepository
     {
         private static List<Cart> Carts { get; } = new List<Cart>();
 
-        public static Cart TryGetByUserId(string userId)
+        public Cart TryGetByUserId(string userId)
         {
             var cart = Carts.FirstOrDefault(x => x.UserId == userId);
             return cart;
         }
 
-        public static void Add(Guid productId, string userId)
+        public void Add(Product product, string userId)
         {
             var existingCart = TryGetByUserId(userId);
 
-            if (existingCart==null)
+            if (existingCart == null)
             {
                 var newCart = new Cart()
                 {
@@ -30,7 +30,7 @@ namespace OnlineShopWebApp3
                         new CartItem()
                         {
                             Id=Guid.NewGuid(),
-                            Product = ProductsRepository.TryGetById(productId),
+                            Product = product,
                             Amount =1
                         }
                     }
@@ -40,7 +40,7 @@ namespace OnlineShopWebApp3
             }
             else
             {
-                var existingCartItem = existingCart.Items.FirstOrDefault(x => x.Product.Id == productId);
+                var existingCartItem = existingCart.Items.FirstOrDefault(x => x.Product.Id == product.Id);
 
                 if (existingCartItem != null)
                 {
@@ -51,7 +51,7 @@ namespace OnlineShopWebApp3
                     existingCart.Items.Add(new CartItem()
                     {
                         Id = Guid.NewGuid(),
-                        Product = ProductsRepository.TryGetById(productId),
+                        Product = product,
                         Amount = 1
                     });
                 }
