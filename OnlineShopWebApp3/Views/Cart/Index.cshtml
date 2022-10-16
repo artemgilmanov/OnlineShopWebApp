@@ -11,6 +11,8 @@
                         <th scope="col">Price</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Summ</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -21,6 +23,12 @@
                             <td>@item.Product.Cost</td>
                             <td>@item.Amount</td>
                             <td>@item.Cost</td>
+                            <td>
+                                <a class="btn btn-danger" href="/cart/RemoveFromCart?itemId=@item.Id" role="button">-</a>
+                            </td>
+                            <td>
+                                <a class="btn btn-danger" href="/cart/AddToCart?productId=@item.Product.Id" role="button">+</a>
+                            </td>
                         </tr>
                     }
                 </tbody>

@@ -15,7 +15,7 @@ namespace OnlineShopWebApp3
             return cart;
         }
 
-        public void Add(Product product, string userId)
+        public void AddToCart(Product product, string userId)
         {
             var existingCart = TryGetByUserId(userId);
 
@@ -40,7 +40,7 @@ namespace OnlineShopWebApp3
             }
             else
             {
-                var existingCartItem = existingCart.Items.FirstOrDefault(x => x.Product.Id == product.Id);
+                var existingCartItem = existingCart?.Items?.FirstOrDefault(x => x.Product.Id == product.Id);
 
                 if (existingCartItem != null)
                 {
@@ -57,6 +57,23 @@ namespace OnlineShopWebApp3
                 }
             }
 
+        }
+
+        public void RemoveFromCart(Guid itemId)
+        {
+            var existingCart = TryGetByUserId(Constants.UserId);
+            var existingCartItem = existingCart?.Items?.FirstOrDefault(x => x.Id == itemId);
+            existingCartItem.Amount--;
+
+            if (existingCartItem.Amount <= 0)
+            {
+                existingCart.Items.Remove(existingCartItem);
+            }
+
+            if (existingCart.Items.Count<=0)
+            {
+                Carts.Remove(existingCart);
+            }
         }
     }
 }

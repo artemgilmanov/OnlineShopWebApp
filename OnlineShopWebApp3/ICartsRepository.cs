@@ -5,7 +5,10 @@ namespace OnlineShopWebApp3
 {
     public interface ICartsRepository
     {
-        void Add(Product product, string userId);
+        void AddToCart(Product product, string userId);
+
         Cart TryGetByUserId(string userId);
+
+        void RemoveFromCart(Guid itemId);
     }
 }

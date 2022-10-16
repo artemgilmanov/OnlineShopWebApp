@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp3.Models;
 using System;
+using System.Linq;
 
 namespace OnlineShopWebApp3.Controllers
 {
@@ -8,7 +9,6 @@ namespace OnlineShopWebApp3.Controllers
     {
         private readonly ICartsRepository _cartsRepository;
         private readonly IProductsRepository _productsRepository;
-
 
         public CartController(ICartsRepository cartsRepository, IProductsRepository productsRepository)
         {
@@ -35,10 +35,22 @@ namespace OnlineShopWebApp3.Controllers
             return View();
         }
 
-        public IActionResult Add(Guid productId)
+        public IActionResult AddToCart(Guid productId)
         {
             var product = _productsRepository.TryGetById(productId);
-            _cartsRepository.Add(product, Constants.UserId);
+            _cartsRepository.AddToCart(product, Constants.UserId);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //public IActionResult IncreaseItemAmount(Guid itemId)
+        //{
+        //    _cartsRepository.IncreaseItemAmount(itemId);
+        //    return RedirectToAction(nameof(Index));
+        //}
+
+        public IActionResult RemoveFromCart(Guid itemId)
+        {
+            _cartsRepository.RemoveFromCart(itemId);
             return RedirectToAction(nameof(Index));
         }
     }
