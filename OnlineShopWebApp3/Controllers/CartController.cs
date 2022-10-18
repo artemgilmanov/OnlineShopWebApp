@@ -53,5 +53,19 @@ namespace OnlineShopWebApp3.Controllers
             _cartsRepository.Clear();
             return RedirectToAction(nameof(Index));
         }
+
+        public IActionResult CheckOut()
+        {
+            return View();
+        }
+        public IActionResult Submit()
+        {
+            var message = "The order completed.";
+            ViewBag.Submit = message;
+
+            _cartsRepository.Clear();
+
+            return View();
+        }
     }
 }
