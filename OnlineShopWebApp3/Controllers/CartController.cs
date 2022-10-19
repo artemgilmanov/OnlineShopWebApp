@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OnlineShopWebApp3.Models;
 using System;
-using System.Linq;
 
 namespace OnlineShopWebApp3.Controllers
 {
@@ -50,22 +48,11 @@ namespace OnlineShopWebApp3.Controllers
 
         public IActionResult Clear()
         {
-            _cartsRepository.Clear();
+            _cartsRepository.Clear(Constants.UserId);
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult CheckOut()
-        {
-            return View();
-        }
-        public IActionResult Submit()
-        {
-            var message = "The order completed.";
-            ViewBag.Submit = message;
-
-            _cartsRepository.Clear();
-
-            return View();
-        }
+       
+       
     }
 }

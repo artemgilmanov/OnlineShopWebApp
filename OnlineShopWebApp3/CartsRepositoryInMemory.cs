@@ -76,7 +76,7 @@ namespace OnlineShopWebApp3
             }
         }
 
-        void ICartsRepository.Clear()
+        void ICartsRepository.Clear(string UserId)
         {
             var existingCart = TryGetByUserId(Constants.UserId);
             Carts.Remove(existingCart);

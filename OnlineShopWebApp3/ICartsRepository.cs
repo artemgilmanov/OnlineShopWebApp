@@ -10,6 +10,6 @@ namespace OnlineShopWebApp3
         Cart TryGetByUserId(string userId);
 
         void RemoveFromCart(Guid itemId);
-        void Clear();
+        void Clear(string UserId);
     }
 }
