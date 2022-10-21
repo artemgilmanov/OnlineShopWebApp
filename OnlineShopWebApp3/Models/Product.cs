@@ -9,8 +9,7 @@ namespace OnlineShopWebApp3.Models
         public decimal Cost { get; }
         public string Description { get; }
         public string ImagePath { get; }
-
-         public Product(Guid id, string name, decimal cost, string description, string imagePath)
+        public Product(Guid id, string name, decimal cost, string description, string imagePath)
         {
             Id = Guid.NewGuid();
             Name = name;
@@ -18,7 +17,5 @@ namespace OnlineShopWebApp3.Models
             Description = description;
             ImagePath = imagePath;
         }
-
-
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShopWebApp3.Models;
 
 namespace OnlineShopWebApp3.Controllers
 {
@@ -18,10 +19,16 @@ namespace OnlineShopWebApp3.Controllers
             return View();
         }
 
-        public IActionResult CheckOut()
+        [HttpPost]
+        public IActionResult CheckOut(UserDeliveryInfo user)
         {
             var existingCart = _cartsRepository.TryGetByUserId(Constants.UserId);
-            _odersRepository.Add(existingCart);
+            var order = new Order()
+            {
+                User=user,
+                Items=existingCart.Items,
+            };
+            _odersRepository.Add(order);
             _cartsRepository.Clear(Constants.UserId);
 
             return RedirectToAction(nameof(Submit));
@@ -33,5 +40,7 @@ namespace OnlineShopWebApp3.Controllers
             ViewBag.Submit = message;
             return View();
         }
+
+
     }
 }

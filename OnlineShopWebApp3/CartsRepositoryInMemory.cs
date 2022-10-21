@@ -7,15 +7,15 @@ namespace OnlineShopWebApp3
 {
     public class CartsRepositoryInMemory : ICartsRepository
     {
-        private static List<Cart> Carts { get; } = new List<Cart>();
+        private static List<Cart> carts { get; } = new List<Cart>();
 
         public Cart TryGetByUserId(string userId)
         {
-            var cart = Carts.FirstOrDefault(x => x.UserId == userId);
+            var cart = carts.FirstOrDefault(x => x.UserId == userId);
             return cart;
         }
 
-        public void AddToCart(Product product, string userId)
+        public void AddProduct(Product product, string userId)
         {
             var existingCart = TryGetByUserId(userId);
 
@@ -36,7 +36,7 @@ namespace OnlineShopWebApp3
                     }
                 };
 
-                Carts.Add(newCart);
+                carts.Add(newCart);
             }
             else
             {
@@ -72,14 +72,20 @@ namespace OnlineShopWebApp3
 
             if (existingCart.Items.Count<=0)
             {
-                Carts.Remove(existingCart);
+                carts.Remove(existingCart);
             }
         }
 
-        void ICartsRepository.Clear(string UserId)
+        public void Clear(string UserId)
         {
             var existingCart = TryGetByUserId(Constants.UserId);
-            Carts.Remove(existingCart);
+            carts.Remove(existingCart);
+        }
+
+        public void AddOrder(User order, string userId)
+        {
+            var existingCart = TryGetByUserId(Constants.UserId);
+            existingCart.Orders.Add(order);
         }
     }
 }

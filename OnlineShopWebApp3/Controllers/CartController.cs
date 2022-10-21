@@ -36,7 +36,7 @@ namespace OnlineShopWebApp3.Controllers
         public IActionResult AddToCart(Guid productId)
         {
             var product = _productsRepository.TryGetById(productId);
-            _cartsRepository.AddToCart(product, Constants.UserId);
+            _cartsRepository.AddProduct(product, Constants.UserId);
             return RedirectToAction(nameof(Index));
         }
        
@@ -51,8 +51,6 @@ namespace OnlineShopWebApp3.Controllers
             _cartsRepository.Clear(Constants.UserId);
             return RedirectToAction(nameof(Index));
         }
-
-       
        
     }
 }

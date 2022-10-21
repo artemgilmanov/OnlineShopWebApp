@@ -5,11 +5,11 @@ namespace OnlineShopWebApp3
 {
     public class OrdersRepositoryInMemory : IOrdersRepository
     {
-        private static List<Cart> orders { get; } = new List<Cart>();
+        private static List<Order> orders { get; } = new List<Order>();
 
-        public void Add(Cart cart)
+        public void Add(Order order)
         {
-            orders.Add(cart);
+            orders.Add(order);
         }
 
     }

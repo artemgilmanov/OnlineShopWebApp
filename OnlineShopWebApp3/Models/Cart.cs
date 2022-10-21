@@ -9,13 +9,20 @@ namespace OnlineShopWebApp3.Models
         public Guid Id { get; set; }
         public List<CartItem> Items { get; set; }
         public string UserId { get; set; }
+        public List<User> Orders { get; set; } = new List<User>();
         public decimal TotalCost 
         {
             get
             {
-                return Items.Sum(x => x.Cost);
+                return Items?.Sum(x => x.Cost) ?? 0;
             }
-                 
+        }
+        public decimal Amount
+        {
+            get
+            {
+                return Items?.Sum(x => x.Amount) ?? 0;
+            }
         }
     }
 }
