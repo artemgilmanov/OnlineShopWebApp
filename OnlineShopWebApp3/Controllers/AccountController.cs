@@ -9,6 +9,7 @@ namespace OnlineShopWebApp3.Controllers
         {
             return View();
         }
+       
         [HttpPost]
         public IActionResult Create(CreateAccount createAccount)
         {

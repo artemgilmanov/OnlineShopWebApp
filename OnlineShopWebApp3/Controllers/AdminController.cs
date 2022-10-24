@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OnlineShopWebApp3.Models;
 
 namespace OnlineShopWebApp3.Controllers
 {
@@ -10,14 +9,17 @@ namespace OnlineShopWebApp3.Controllers
         {
             return View();
         }
+
         public IActionResult Products()
         {
             return View();
         }
+
         public IActionResult Roles()
         {
             return View();
         }
+
         public IActionResult Users()
         {
             return View();

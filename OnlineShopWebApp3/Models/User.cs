@@ -1,7 +1,4 @@
-﻿using System.Reflection.Emit;
-using System.Xml.Linq;
-
-namespace OnlineShopWebApp3.Models
+﻿namespace OnlineShopWebApp3.Models
 {
     public class User
     {
