@@ -82,7 +82,7 @@ namespace OnlineShopWebApp3
             carts.Remove(existingCart);
         }
 
-        public void AddOrder(User order, string userId)
+        public void AddOrder(Order order, string userId)
         {
             var existingCart = TryGetByUserId(Constants.UserId);
             existingCart.Orders.Add(order);

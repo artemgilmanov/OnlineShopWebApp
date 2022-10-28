@@ -14,7 +14,15 @@ namespace OnlineShopWebApp3.Controllers
             _odersRepository = odersRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult SuccessCheckOut()
+        {
+            var message = "The order completed.";
+            ViewBag.Submit = message;
+
+            return View();
+        }
+
+        public IActionResult CheckOut()
         {
             return View();
         }
@@ -28,19 +36,11 @@ namespace OnlineShopWebApp3.Controllers
                 User=user,
                 Items=existingCart.Items,
             };
+
             _odersRepository.Add(order);
             _cartsRepository.Clear(Constants.UserId);
 
-            return RedirectToAction(nameof(Submit));
+            return RedirectToAction(nameof(SuccessCheckOut));
         }
-
-        public IActionResult Submit()
-        {
-            var message = "The order completed.";
-            ViewBag.Submit = message;
-            return View();
-        }
-
-
     }
 }

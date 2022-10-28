@@ -5,7 +5,7 @@ namespace OnlineShopWebApp3
 {
     public interface ICartsRepository
     {
-        void AddOrder(User order, string userId);
+        void AddOrder(Order order, string userId);
         void AddProduct(Product product, string userId);
         Cart TryGetByUserId(string userId);
         void RemoveFromCart(Guid itemId);

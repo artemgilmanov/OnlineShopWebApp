@@ -1,0 +1,71 @@
+﻿@model UserDeliveryInfo
+
+<form asp-action="CheckOut" asp-controller="Order">
+
+    <div class="validation" asp-validation-summary="All"></div>
+
+    <div class="col-6">
+        <label asp-for="FirstName">Firstname</label><br />
+        <input asp-for="FirstName" />
+        <span asp-validation-for="FirstName"> </span>
+    </div>
+    
+    <div class="col-6">
+        <label asp-for="LastName">Lastname</label><br />
+        <input asp-for="LastName" />
+        <span asp-validation-for="LastName"> </span>
+    </div>
+    
+    <div class="col-12">
+        <label asp-for="PhoneNumber">Phone number</label><br />
+        <input asp-for="PhoneNumber" />
+        <span asp-validation-for="PhoneNumber"> </span>
+    </div>
+
+    <div class="col-6">
+        <label asp-for="Address">Address</label><br />
+        <input asp-for="Address" />
+        <span asp-validation-for="Address"> </span>
+    </div>
+
+    <div class="col-6">
+        <label asp-for="AddressOptional">Optional address</label><br />
+        <input asp-for="AddressOptional" />
+        <span asp-validation-for="AddressOptional"> </span>
+    </div>
+
+    <div class="col-6">
+        <label asp-for="City">City</label><br />
+        <input asp-for="City" />
+        <span asp-validation-for="City"> </span>
+    </div>
+
+    <div class="col-6">
+        <label asp-for="State">State</label><br />
+        <span asp-validation-for="State"> </span>
+        <select asp-for="State" />
+        <option>Please select one ...</option>
+        @foreach (var state in Constants.States)
+        {
+            <option>@state</option>
+            }
+    </div>
+
+    <br />
+
+    <div class="col-6">
+        <label asp-for="Postcode">Postcode</label><br />
+        <input asp-for="Postcode" />
+        <span asp-validation-for="Postcode"> </span>
+    </div>
+
+    <div>
+        <label asp-for="RememberAddress">Remember adress</label><br />
+        <input type="checkbox" value="true" asp-for="RememberAddress" />
+        <span asp-validation-for="RememberAddress"> </span>
+    </div>
+
+    <div class="col-12">
+        <button class="btn btn-primary" type="submit" asp-controller="order" asp-action="checkOut">Submit</button>
+    </div>
+</form>

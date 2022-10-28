@@ -9,7 +9,7 @@ namespace OnlineShopWebApp3.Models
         public Guid Id { get; set; }
         public List<CartItem> Items { get; set; }
         public string UserId { get; set; }
-        public List<User> Orders { get; set; } = new List<User>();
+        public List<Order> Orders { get; set; } = new List<Order>();
         public decimal TotalCost 
         {
             get

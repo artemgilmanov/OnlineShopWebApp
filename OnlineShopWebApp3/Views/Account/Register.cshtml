@@ -1,0 +1,48 @@
+﻿@model Register
+
+<form form asp-action="Register" asp-controller="Account">
+
+    <div class="validation" asp-validation-summary="All"></div>
+
+    <div class="col-12">
+        <h3>Register</h3>
+    </div>
+
+    <div>
+        <div class="col-6">
+            <label asp-for="FirstName"></label><br />
+            <input asp-for="FirstName" />
+            <span asp-validation-for="FirstName"> </span>
+        </div>
+        <div class="col-6">
+            <label asp-for="LastName"></label><br />
+            <input type="LastName" asp-for="LastName" />
+            <span asp-validation-for="LastName"> </span>
+        </div>
+    </div>
+
+    <div>
+        <div class="col-6">
+            <label asp-for="Email"></label><br />
+            <input asp-for="Email" />
+            <span asp-validation-for="Email"> </span>
+        </div>
+        <div class="col-3">
+            <label asp-for="Password"></label><br />
+            <input type="password" asp-for="Password" />
+            <span asp-validation-for="Password"> </span>
+        </div>
+        <div class="col-3">
+            <label asp-for="RepeatPasswort"></label><br />
+            <input type="password" asp-for="RepeatPasswort" />
+            <span asp-validation-for="RepeatPasswort"> </span>
+        </div>
+    </div>
+
+    <div>
+        <div class="col-12">
+            <button class="btn btn-primary" asp-controller="Account" asp-action="Register">Register</button>
+        </div>
+    </div>
+
+</form>
