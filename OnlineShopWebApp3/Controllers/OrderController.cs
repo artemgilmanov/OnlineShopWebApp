@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp3.Models;
+using System;
 
 namespace OnlineShopWebApp3.Controllers
 {
@@ -28,19 +29,36 @@ namespace OnlineShopWebApp3.Controllers
         }
 
         [HttpPost]
-        public IActionResult CheckOut(UserDeliveryInfo user)
+        public IActionResult CheckOut(UserDeliveryInfo userDeliveryInfo)
         {
-            var existingCart = _cartsRepository.TryGetByUserId(Constants.UserId);
-            var order = new Order()
+            
+            if (!userDeliveryInfo.IsValidPostcode(userDeliveryInfo.Postcode))
             {
-                User=user,
-                Items=existingCart.Items,
-            };
+                    ModelState.AddModelError("", "Postcode must have 5 symbols and value between 01000 und 99999.");
+            }
 
-            _odersRepository.Add(order);
-            _cartsRepository.Clear(Constants.UserId);
+            if (!userDeliveryInfo.PhoneNumber.StartsWith('+') )
+            {
+                ModelState.AddModelError("", "Phone number has the following format:+XX(XXX)XXXXXXXX.");
+            }
 
-            return RedirectToAction(nameof(SuccessCheckOut));
+            if (ModelState.IsValid)
+            {
+                var existingCart = _cartsRepository.TryGetByUserId(Constants.UserId);
+                var order = new Order()
+                {
+                    UserDeliveryInfo = userDeliveryInfo,
+                    Items = existingCart.Items,
+                };
+
+                _odersRepository.Add(order);
+                _cartsRepository.Clear(Constants.UserId);
+
+                return RedirectToAction(nameof(SuccessCheckOut));
+            }
+
+            return View();
+
         }
     }
 }

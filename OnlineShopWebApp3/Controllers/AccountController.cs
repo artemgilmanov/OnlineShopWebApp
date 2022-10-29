@@ -13,7 +13,23 @@ namespace OnlineShopWebApp3.Controllers
         [HttpPost]
         public IActionResult Register(Register register)
         {
-            return RedirectToAction("Index", "Home");
+            //havent tested
+            if (register.FirstName == register.LastName)
+            {
+                ModelState.AddModelError("", "Firstname and Lastname must be different.");
+            }
+            //havent tested
+            if (register.FirstName == register.Password || register.LastName == register.Password)
+            {
+                ModelState.AddModelError("", "Password must not be the same as Firstname or Lastname.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return Content($"{register.FirstName}-{register.LastName}-{register.Password}-{register.Email}");
         }
 
         public IActionResult Login()
@@ -34,7 +50,7 @@ namespace OnlineShopWebApp3.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return Content($"{login.Email}-{login.Password}-{login.RememberMe}");
+            return Content($"{login.Email}-{login.Password}");
         }
 
     }

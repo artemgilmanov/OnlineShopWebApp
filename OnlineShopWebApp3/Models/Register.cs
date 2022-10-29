@@ -4,23 +4,24 @@ namespace OnlineShopWebApp3.Models
 {
     public class Register
     {
-        [Required(ErrorMessage = "Please write Firstname.")]
-        [StringLength(25, MinimumLength = 2, ErrorMessage = "Firstname should have more that 2 and less tham 25 symbols.")]
+        [Required(ErrorMessage = "Please enter Firstname.")]
+        [StringLength(15, MinimumLength = 2, ErrorMessage = "Firstname must have min 2 and max 15 symbols.")]
         public string FirstName { get; set; }
 
-        [Required(ErrorMessage = "Please write Lastname.")]
-        [StringLength(25, MinimumLength = 2, ErrorMessage = "Lastname should have more that 2 and less tham 25 symbols.")]
+        [Required(ErrorMessage = "Please enter Lastname.")]
+        [StringLength(15, MinimumLength = 2, ErrorMessage = "Lastname must have min 2 and max 15 symbols.")]
         public string LastName { get; set; }
 
-        [EmailAddress(ErrorMessage = "Please enter valid e-mail.")]
-        [Required(ErrorMessage = "Please enter e-mail.")]
+        [Required(ErrorMessage = "Please enter Email.")]
+        [EmailAddress(ErrorMessage = "Email must have @ symbol.")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter password.")]
+        [StringLength(15, MinimumLength = 8, ErrorMessage = "Password must have min 8 and max 15 symbols.")]
         public string Password { get; set; }
 
-        [Compare("Password", ErrorMessage = "Passwords don't match.")]
         [Required(ErrorMessage = "Please enter password.")]
+        [Compare("Password", ErrorMessage = "Passwords don't match.")]
         public string RepeatPasswort { get; set; }
     }
 }

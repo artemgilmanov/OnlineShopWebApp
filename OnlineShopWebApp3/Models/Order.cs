@@ -10,7 +10,7 @@ namespace OnlineShopWebApp3.Models
     {
         public Guid Id { get; set; }
 
-        public UserDeliveryInfo User { get; set; }
+        public UserDeliveryInfo UserDeliveryInfo { get; set; }
 
         public List<CartItem> Items { get; set; }
 
