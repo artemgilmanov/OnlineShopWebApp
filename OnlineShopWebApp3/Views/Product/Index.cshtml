@@ -1,13 +1,24 @@
 ﻿@model Product
 
 <div class="container-fluid">
-    <div class="row pt-5">
+    <div class="row pt-lg-5">
         <div class="col-6">
         <img src=@Model.ImagePath class="img-fluid" alt="Image of a product.">
         </div>
         <div class="col-6">
-            <div><h5>@Model.Name</h5></div>
-            <div><h5>@Model.Description</h5></div>
+            <div>
+                <p>
+                    <strong>@Model.Name.ToUpper()</strong>
+                </p>
+                </div>
+            <div>
+                <p>
+                    <strong>Materials</strong><br />
+                    @Model.Description</p>
+                <p>
+                    <strong>Size</strong><br />
+                    @Model.Description</p>
+            </div>
 
             <div>
                 <a class="btn btn-light" href="/home/index/" role="button">Continue</a>
