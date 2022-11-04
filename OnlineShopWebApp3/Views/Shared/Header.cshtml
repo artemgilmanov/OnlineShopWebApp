@@ -1,7 +1,7 @@
 ﻿<header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom mb-0">
         <div class="container-fluid body-content">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Vecher</a>
+            <a class="navbar-brand h3" asp-area="" asp-controller="Home" asp-action="Index">vecher</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -12,15 +12,15 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">Cart @await Component.InvokeAsync("Cart")</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Orders">Administrator</a>
+                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Orders">Administrator</a>
                     </li>
                 </ul>
+            </div>
+            <div>
+                <a class="nav-link text-dark text-right" asp-area="" asp-controller="cart" asp-action="Index">Cart @await Component.InvokeAsync("Cart")</a>
             </div>
         </div>
     </nav>

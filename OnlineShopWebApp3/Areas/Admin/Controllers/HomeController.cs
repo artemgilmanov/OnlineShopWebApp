@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace OnlineShopWebApp3.Controllers
+namespace OnlineShopWebApp3.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    [Area("Admin")]
+
+    public class HomeController : Controller
     {
-      
         public IActionResult Orders()
         {
             return View();
