@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
-using System.Reflection.Emit;
-using System.Xml.Linq;
 
 namespace OnlineShopWebApp3.Models
 {
