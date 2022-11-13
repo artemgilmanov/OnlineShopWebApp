@@ -15,7 +15,6 @@ namespace OnlineShopWebApp3.Controllers
 
         public IActionResult Index()
         {
-            
             var products = _productsRepository.GetAll();
             return View(products);
         }

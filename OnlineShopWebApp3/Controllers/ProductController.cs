@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShopWebApp3.Models;
 using System;
 
 namespace OnlineShopWebApp3.Controllers

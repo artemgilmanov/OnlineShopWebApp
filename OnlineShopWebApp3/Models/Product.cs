@@ -4,12 +4,17 @@ namespace OnlineShopWebApp3.Models
 {
     public class Product
     {
-        public Guid Id { get; }
-        public string Name { get; }
-        public decimal Cost { get; }
-        public string Description { get; }
-        public string ImagePath { get; }
-        public Product(Guid id, string name, decimal cost, string description, string imagePath)
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public decimal Cost { get; set; }
+        public string Description { get; set; }
+        public string ImagePath { get; set; }
+        public Product()
+        {
+            
+
+        }
+        public Product(string name, decimal cost, string description, string imagePath)
         {
             Id = Guid.NewGuid();
             Name = name;
@@ -17,5 +22,6 @@ namespace OnlineShopWebApp3.Models
             Description = description;
             ImagePath = imagePath;
         }
+       
     }
 }

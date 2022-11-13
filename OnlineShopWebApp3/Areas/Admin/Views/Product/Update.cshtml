@@ -1,0 +1,46 @@
+﻿@model Product
+
+<form class="needs-validation" asp-controller="Product" asp-action="Update">
+
+<div class="container-fluid">
+
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <div class="validation" asp-validation-summary="All"></div>
+        </div>
+    </div>
+    <br />
+
+    <div class="row pt-lg-5">
+        <div class="col-6">
+                <input type="hidden" name="ImagePath" value="@Model?.ImagePath" />
+                <img src=@Model?.ImagePath class="img-fluid" alt="Image of a product.">
+        </div>
+
+            <div class="form-row">
+                <div class="col-md-6">
+                    <label asp-for="Name" >New name</label><br />
+                    <input asp-for="Name" class="form-control" placeholder="@Model?.Name" />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Description">New description</label><br />
+                    <input asp-for="Description" class="form-control" placeholder="@Model?.Description" />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Cost">New cost</label><br />
+                    <input asp-for="Cost" class="form-control" placeholder="@Model?.Cost" />
+                </div>
+            </div>
+
+            <div class="row pt-lg-5">
+                <div class="col-6">
+                    <div>
+                        <input type="hidden" name="Id" value="@Model?.Id" />
+                        <button type="submit" class="btn btn-light  btn-block" asp-controller="Product" asp-action="Update" asp-route-productId="@Model.Id">Update</button>
+                    </div>
+                </div>
+            </div>
+      
+    </div>
+</div>
+</form>

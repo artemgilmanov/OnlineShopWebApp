@@ -1,0 +1,47 @@
+﻿@model Product
+
+<div class="container-fluid text-center">
+    <h3 class="display-4">Add new Product</h3>
+</div>
+<br />
+
+<form class="needs-validation" asp-action="Login" asp-controller="Account">
+
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="validation" asp-validation-summary="All"></div>
+            </div>
+        </div>
+        <br />
+
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <label asp-for="Name" class="col-form-label">Name</label><br />
+                <input asp-for="Name" class="form-control" />
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <label asp-for="Cost">Cost</label><br />
+                <input asp-for="Cost" class="form-control" />
+            </div>
+        </div>
+         <div class="row justify-content-center">
+    <div class="col-4">
+                <label asp-for="Description">Description</label><br />
+                <input asp-for="Description" class="form-control" />
+            </div>
+        </div>
+        
+        <br />
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <button type="submit" class="btn btn-light  btn-block" asp-area="Admin" asp-controller="Product" asp-action="Add">Add</button>
+            </div>
+        </div>
+        <br />
+        
+    </div>
+</form>
