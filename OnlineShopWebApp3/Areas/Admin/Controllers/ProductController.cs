@@ -41,10 +41,10 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Update(Product proproductToReplaceWith)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View(proproductToReplaceWith);
-            //}
+            if (!ModelState.IsValid)
+            {
+                return View(proproductToReplaceWith);
+            }
 
             _productsRepository.Update(proproductToReplaceWith);
             return RedirectToAction("Products", "Home", new { area = "Admin" });

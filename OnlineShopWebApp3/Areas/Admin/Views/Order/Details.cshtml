@@ -1,0 +1,51 @@
+﻿@model Order
+
+<form method="post" asp-action="UpdateOrderStatus" asp-controller="Order">
+<div class="row">
+        <div class="row-6">
+            <table class="table">
+                <tr>
+                    <td>Date and Time</td>
+                    <td>@Model.CreatedDateTime.ToString("g")</td>
+                </tr>
+                <tr>
+                    <td>Delivery adress</td>
+                    <td>@Model.UserDeliveryInfo.Address</td>
+                </tr>
+                <tr>
+                    <td>Optional delivery adress</td>
+                    <td>@Model.UserDeliveryInfo.AddressOptional</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>
+                        @Model.UserDeliveryInfo.FirstName
+                        @Model.UserDeliveryInfo.LastName
+                    </td>
+                </tr>
+                <tr>
+                    <td>Phone</td>
+                    <td>
+                        @Model.UserDeliveryInfo.PhoneNumber
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cost</td>
+                    <td>
+                        @Model.Cost
+                    </td>
+                </tr>
+                <tr>
+                    <td>Status</td>
+                    <td>
+                        <select asp-for="@Model.Status"
+                            asp-items = "@Html.GetEnumSelectList<OrderStatus>()"
+                            class="form-control">
+                        </select>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <button class="btn btn-success" type="submit" asp-area="Admin" asp-controller="Order" asp-action="UpdateOrderStatus" asp-route-orderId="@Model.Id">Update Status</button>
+</form>

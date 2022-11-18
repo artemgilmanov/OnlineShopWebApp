@@ -6,18 +6,19 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
 
     public class HomeController : Controller
     {
-        private readonly ICartsRepository _cartsRepository;
         private readonly IProductsRepository _productsRepository;
+        private readonly IOrdersRepository _ordersRepository;
 
-        public HomeController(ICartsRepository cartsRepository, IProductsRepository productsRepository)
+        public HomeController(IProductsRepository productsRepository, IOrdersRepository ordersRepository)
         {
-            _cartsRepository = cartsRepository;
             _productsRepository = productsRepository;
+            _ordersRepository = ordersRepository;
         }
-       
+
         public IActionResult Orders()
         {
-            return View();
+            var orders = _ordersRepository?.GetAll();
+            return View(orders);
         }
 
         public IActionResult Products()
@@ -25,10 +26,12 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
             var products = _productsRepository.GetAll();
             return View(products);
         }
+
         public IActionResult Roles()
         {
             return View();
         }
+
         public IActionResult Users()
         {
             return View();

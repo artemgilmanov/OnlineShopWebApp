@@ -12,7 +12,6 @@ namespace OnlineShopWebApp3.Views.Shared.ViewComponents.CartViewComponents
             _cartsRepository = cartsRepository;
         }
 
-
         public IViewComponentResult Invoke()
         {
             var cart = _cartsRepository.TryGetByUserId(Constants.UserId);

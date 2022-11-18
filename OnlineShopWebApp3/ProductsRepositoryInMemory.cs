@@ -7,7 +7,7 @@ namespace OnlineShopWebApp3
 {
     public class ProductsRepositoryInMemory : IProductsRepository
     {
-        private static List<Product> products = new List<Product>()
+        private static List<Product> Products = new List<Product>()
         {
             new Product("Product1", 100, "Description1", "/images/product1.png"),
             new Product("Product2", 200, "Description2", "/images/product2.png"),
@@ -18,30 +18,30 @@ namespace OnlineShopWebApp3
 
         public List<Product> GetAll()
         {
-            return products;
+            return Products;
         }
 
         public Product TryGetById(Guid productId)
         {
-            var product = products.FirstOrDefault(x => x.Id == productId);
+            var product = Products.FirstOrDefault(x => x.Id == productId);
             return product;
         }
 
         public void Add(Product newProduct)
         {
             newProduct.ImagePath = "/images/placeholder.png";
-            products.Add(newProduct);
+            Products.Add(newProduct);
         }
 
         public void Delete(Guid productId)
         {
-            var product = products.FirstOrDefault(x => x.Id == productId);
-            products.Remove(product);
+            var product = Products.FirstOrDefault(x => x.Id == productId);
+            Products.Remove(product);
         }
 
         public void Update(Product productToReplaceWith)
         {
-            var productToUpdate = products.FirstOrDefault(x => x.Id == productToReplaceWith.Id);
+            var productToUpdate = Products.FirstOrDefault(x => x.Id == productToReplaceWith.Id);
 
             if (productToUpdate==null)
             {
@@ -52,8 +52,6 @@ namespace OnlineShopWebApp3
             productToUpdate.Cost = productToReplaceWith.Cost;
             productToUpdate.Description = productToReplaceWith.Description;
             productToUpdate.ImagePath = productToReplaceWith.ImagePath;
-
-
         }
     }
 }
