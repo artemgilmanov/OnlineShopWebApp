@@ -4,14 +4,18 @@ namespace OnlineShopWebApp3.Models
 {
     public enum OrderStatus
     {
-        [Display(Name = "Created")]
+        [Display(Name = "Created")] 
         Created,
+
         [Display(Name = "Processed")]
         Processed,
-        [Display(Name = "Delivering")]
+
+        [Display(Name = "On the way")]
         Delivering,
+
         [Display(Name = "Delivered")]
         Delivered,
+
         [Display(Name = "Canceled")]
         Canceled
     }

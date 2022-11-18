@@ -31,7 +31,7 @@
                             <tr>
                                 <th scope="row">@(i+1)</th>
                                 <td>@Model[i].Cost</td>
-                                <td>@Model[i].Status</td>
+                                <td>@EnumHelper.GetDisplayName(Model[i].Status)</td>
                                 <td>@Model[i].CreatedDateTime.ToString("d")</td>
                                 <td>@Model[i].CreatedDateTime.ToString("t")</td>
                                 <td>

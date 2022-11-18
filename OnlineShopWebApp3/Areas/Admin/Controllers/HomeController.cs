@@ -8,11 +8,14 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
     {
         private readonly IProductsRepository _productsRepository;
         private readonly IOrdersRepository _ordersRepository;
+        private readonly IRolesRepository _rolesRepository;
 
-        public HomeController(IProductsRepository productsRepository, IOrdersRepository ordersRepository)
+
+        public HomeController(IProductsRepository productsRepository, IOrdersRepository ordersRepository, IRolesRepository rolesRepository)
         {
             _productsRepository = productsRepository;
             _ordersRepository = ordersRepository;
+            _rolesRepository = rolesRepository;
         }
 
         public IActionResult Orders()
@@ -29,7 +32,8 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
 
         public IActionResult Roles()
         {
-            return View();
+            var roles = _rolesRepository.GetAll();
+            return View(roles);
         }
 
         public IActionResult Users()

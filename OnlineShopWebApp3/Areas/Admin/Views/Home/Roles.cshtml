@@ -1,12 +1,42 @@
-﻿<div class="container-fluid pt-3">
+﻿@model List<Role>
+
+<div class="container-fluid pt-3">
     <div class="row">
+
         <div class="col-3">
             @await Html.PartialAsync("AdminPanel")
         </div>
+
         <div class="col-3">
+    
             <div>
-                <div><h5>List of Roles</h5></div>
+                  <a class="text-dark" asp-area="Admin" asp-controller="Role" asp-action="Add">Add new Role</a>
+            </div>
+
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Role</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <tr>
+                                <th scope="row">@(i + 1)</th>
+                                <td>@Model[i].Name</td>
+                                <td>
+                                    <a class="text-dark" asp-area="Admin" asp-controller="Role" asp-action="Delete" asp-route-name="@Model[i].Name">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
+</div>
 </div>
