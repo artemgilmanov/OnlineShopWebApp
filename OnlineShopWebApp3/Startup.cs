@@ -23,6 +23,8 @@ namespace OnlineShopWebApp3
             services.AddSingleton<ICartsRepository, CartsRepositoryInMemory>();
             services.AddSingleton<IOrdersRepository, OrdersRepositoryInMemory>();
             services.AddSingleton<IRolesRepository, RolesRepositoryInMemory>();
+            services.AddSingleton<IUsersManager, UsersManager>();
+
 
 
 
