@@ -19,6 +19,7 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
             _rolesRepository.Delete(name);
             return RedirectToAction("Roles", "Home", new { area = "Admin" });
         }
+
         public IActionResult Add()
         {
             return View();

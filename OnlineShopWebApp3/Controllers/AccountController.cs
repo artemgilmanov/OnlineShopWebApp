@@ -38,7 +38,7 @@ namespace OnlineShopWebApp3.Controllers
                 {
                     Name = $"{register.FirstName} {register.LastName}",
                     Password = register.Password,
-                    Email=register.Email
+                    Email=register.Email,
                 });
 
                 return RedirectToAction(nameof(HomeController.Index), "Home");
@@ -64,21 +64,22 @@ namespace OnlineShopWebApp3.Controllers
             if (login.Email==login.Password)
             {
                 ModelState.AddModelError("","E-mail and password must be different.");
-                return RedirectToAction(nameof(Login));
+                //return RedirectToAction(nameof(Login));
+                return View();
             }
 
             var userAccount = _usersManager.TryGetByName(login.Email);
 
             if (userAccount == null)
             {
-                ModelState.AddModelError("", "The user does not exist.");
-                return RedirectToAction(nameof(Login));
+                ModelState.AddModelError("", "The user does not exist. Please create account.");
+                return View();
             }
 
             if (userAccount.Password!=login.Password)
             {
                 ModelState.AddModelError("", "Wrong password..");
-                return RedirectToAction(nameof(Login));
+                return View();
             }
 
             return RedirectToAction(nameof(HomeController.Index), nameof(HomeController));

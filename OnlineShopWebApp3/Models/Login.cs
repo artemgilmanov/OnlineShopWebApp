@@ -9,7 +9,8 @@ namespace OnlineShopWebApp3.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "Please enter Password.")]
-        [StringLength(15, MinimumLength = 8, ErrorMessage = "Password must have min 8 and max 15 symbols.")]
+        [StringLength(25, MinimumLength = 8, ErrorMessage = "Password must have min 8 and max 25 symbols.")]
         public string Password { get; set; }
     }
+    
 }

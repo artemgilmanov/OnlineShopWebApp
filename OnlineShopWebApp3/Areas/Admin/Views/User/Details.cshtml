@@ -1,0 +1,31 @@
+﻿@model UserAccount
+
+<div class="row">
+        <div class="row-6">
+            <table class="table">
+                <tr>
+                    <td>Name</td>
+                    <td>@Model.Name</td>
+                </tr>
+                <tr>
+                    <td>E-Mail</td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td>@Model.Password</td>
+                </tr>
+                
+            </table>
+        </div>
+    </div>
+    <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-toggle="true" aria-expanded="false">
+        Actions
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="ChangePassword" asp-route-userName="@Model.Name">Change password</a>
+        <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="ChangeEmail" asp-route-userName="@Model.Name">Change Email</a>
+        @*<a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="EditAccessRights" asp-route-userName="@Model.Name">Edit access rights</a>*@
+        <a class="dropdown-item" asp-area="Admin" asp-controller="User" asp-action="Delete" asp-route-userName="@Model.Name">Delete user</a>
+    </div>
+    <button class="btn btn-success" type="submit" asp-area="Admin" asp-controller="Order" asp-action="UpdateOrderStatus" asp-route-userName="@Model.Name">Update</button>
