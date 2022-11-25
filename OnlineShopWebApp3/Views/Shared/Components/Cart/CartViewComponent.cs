@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShopWebApp3.Helpers;
+using OnlineShopWebApp3.Model;
 using System;
 
 namespace OnlineShopWebApp3.Views.Shared.ViewComponents.CartViewComponents

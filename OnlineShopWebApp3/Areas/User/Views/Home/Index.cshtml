@@ -1,0 +1,21 @@
+﻿@model List<Product>
+
+<div class="container-fluid p-0">
+    <div class="row no-gutters">
+        @foreach (var product in Model)
+        {
+            <div class="col-sm-4">
+                <div class="card text-bg-dark rounded-0 border-top-0 border-left-0">
+                    <img src=@product.ImagePath class="card-img" href="/product/index?id=@product.Id" alt="Image of a product.">
+                    <div>
+                        <div class="card-img-overlay">
+                            <a class="stretched-link text-dark" asp-area="User" asp-controller="Product" asp-action="Index" asp-route-id="@product.Id">@product.Name</a>
+                            <p class="card-text">€ @product.Cost</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

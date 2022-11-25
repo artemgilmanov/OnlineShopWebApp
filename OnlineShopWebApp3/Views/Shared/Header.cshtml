@@ -9,10 +9,10 @@
             <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <a class="nav-link text-dark" asp-area="User" asp-controller="Home" asp-action="Index">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                        <a class="nav-link text-dark" asp-area="User" asp-controller="Account" asp-action="Login">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Orders">Administrator</a>
@@ -20,7 +20,7 @@
                 </ul>
             </div>
             <div>
-                <a class="nav-link text-dark text-right" asp-area="" asp-controller="cart" asp-action="Index">Cart @await Component.InvokeAsync("Cart")</a>
+                <a class="nav-link text-dark text-right" asp-area="User" asp-controller="cart" asp-action="Index">Cart @await Component.InvokeAsync("Cart")</a>
             </div>
         </div>
     </nav>

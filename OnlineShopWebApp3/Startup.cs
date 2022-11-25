@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OnlineShopWebApp3.Model;
 using Serilog;
 
 namespace OnlineShopWebApp3
@@ -24,10 +25,6 @@ namespace OnlineShopWebApp3
             services.AddSingleton<IOrdersRepository, OrdersRepositoryInMemory>();
             services.AddSingleton<IRolesRepository, RolesRepositoryInMemory>();
             services.AddSingleton<IUsersManager, UsersManager>();
-
-
-
-
             services.AddControllersWithViews();
         }
 
@@ -41,7 +38,6 @@ namespace OnlineShopWebApp3
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
@@ -55,8 +51,9 @@ namespace OnlineShopWebApp3
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: "MyArea",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                    name: "areas",
+                    pattern: "{area:exists=User}/{controller=Home}/{action=Index}/{id?}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -1,4 +1,4 @@
-﻿@model ChangePassword
+﻿@model ChangeEmail
 
 <form class="needs-validation" asp-controller="User" asp-action="ChangePassword">
 
@@ -17,21 +17,21 @@
 
             <div class="form-row">
                 <div class="col-md-6">
-                    <label asp-for="Password" >New password</label><br />
-                    <input asp-for="Password" class="form-control"/>
-                    <span asp-validation-for="Password"></span>
+                    <label asp-for="Email">New E-mail</label><br />
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email"></span>
                 </div>
                 <div class="col-md-6">
-                    <label asp-for="RepeatPasswort">Repeat new password</label><br />
-                    <input asp-for="RepeatPasswort" class="form-control" />
-                    <span asp-validation-for="Password"></span>
+                    <label asp-for="RepeatEmail">Repeat new E-mail</label><br />
+                    <input asp-for="RepeatEmail" class="form-control" />
+                    <span asp-validation-for="RepeatEmail"></span>
                 </div>
             </div>
 
             <div class="row pt-lg-5">
                 <div class="col-6">
                     <div>
-                        <button type="submit" class="btn btn-light  btn-block" asp-area="Admin" asp-controller="User" asp-action="ChangePassword">Change password</button>
+                        <button type="submit" class="btn btn-light  btn-block" asp-area="Admin" asp-controller="User" asp-action="ChangeEmail">Change E-mail</button>
                     </div>
                 </div>
             </div>

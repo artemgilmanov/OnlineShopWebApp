@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OnlineShopWebApp3.Models;
+using OnlineShopWebApp3.Areas.User.Model;
+using OnlineShopWebApp3.Model;
 using System;
 
 namespace OnlineShopWebApp3.Areas.Admin.Controllers
