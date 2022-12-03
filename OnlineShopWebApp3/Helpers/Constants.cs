@@ -32,7 +32,5 @@ namespace OnlineShopWebApp3.Helpers
                 return states;
             }
         }
-
-
     }
 }

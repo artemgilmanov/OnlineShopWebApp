@@ -13,7 +13,11 @@ namespace OnlineShopWebApp3.Areas.User.Model
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Please enter Phone number.")]
+        [StringLength(15, MinimumLength = 10, ErrorMessage = "Phone number must have minimum 10 symbols.")]
         public string PhoneNumber { get; set; }
+
+        [Required(ErrorMessage = "Please enter country phone code.")]
+        public string CountryCode { get; set; }
 
         [Required(ErrorMessage = "Please enter Address.")]
         [StringLength(50, MinimumLength = 2, ErrorMessage = "Address must have min 2 and max 50 symbols.")]

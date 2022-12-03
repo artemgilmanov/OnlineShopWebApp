@@ -8,19 +8,29 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
+   
+
     @await Html.PartialAsync("Header")
-    <div class="container-fluid body-content p-0">
-        <main role="main" class="pb-3">
+
+    <div class="container-fluid body-content pt-5 pl-0 pr-0 pb-0">
+        <main role="main" class="p-0">
             @RenderBody()
         </main>
     </div>
+
     @await Html.PartialAsync("Footer")
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     
     @await Html.PartialAsync("_ValidationScriptsPartial")
     @RenderSection("Scripts", required: false)
+
+    
 </body>
 </html>

@@ -15,6 +15,8 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
             _usersManager = usersManager;
         }
 
+
+
         public IActionResult Register()
         {
             return View();
@@ -52,6 +54,8 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
         public IActionResult Login()
         {
             return View();
+
+            //return PartialView("_LoginPartial", new Login());
         }
 
         [HttpPost]
@@ -73,12 +77,17 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
             if (userAccount == null)
             {
                 ModelState.AddModelError("", "The user does not exist. Please create account.");
+                //return PartialView("_LoginPartial");
+                //return View("_LoginPartial");
+                //return RedirectToAction("Index", "HomeController");
                 return View();
+
+
             }
 
             if (userAccount.Password != login.Password)
             {
-                ModelState.AddModelError("", "Wrong password..");
+                ModelState.AddModelError("", "Wrong password.");
                 return View();
             }
 

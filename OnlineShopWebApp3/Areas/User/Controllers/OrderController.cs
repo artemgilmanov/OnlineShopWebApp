@@ -40,9 +40,9 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
                 ModelState.AddModelError("", "Postcode must have 5 symbols and value between 01000 und 99999.");
             }
 
-            if (!userDeliveryInfo.PhoneNumber.StartsWith('+'))
+            if (userDeliveryInfo.PhoneNumber.Length < 10)
             {
-                ModelState.AddModelError("", "Phone number has the following format:+XX(XXX)XXXXXXXX.");
+                ModelState.AddModelError("", "Phone number must have minimum 10 symbols.");
             }
 
             if (ModelState.IsValid)
