@@ -2,9 +2,13 @@
 
 @if (Model==null)
 {
-    <div>
-        <h3>@ViewBag.EmpryCart</h3>
-        <a class="btn btn-link" asp-area="User" asp-controller="Home" asp-action="Index" role="button">Continue</a>
+    <div class="flex-sm-row p-sm-5">
+        <div calss="col">
+            <div>
+                <h3>@ViewBag.EmpryCart</h3>
+                <a class="btn btn-link" asp-area="User" asp-controller="Home" asp-action="Index" role="button">Continue</a>
+            </div>
+        </div>
     </div>
 }
 else 

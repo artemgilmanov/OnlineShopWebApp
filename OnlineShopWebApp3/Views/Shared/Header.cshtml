@@ -1,20 +1,18 @@
 ﻿<header>
-
-    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom fixed-top">
+    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom fixed-top  pt-0 pb-0">
         <div class="container-fluid">
-            <div class="row flex-grow-1">
+            <div class="row flex-grow-1 align-content-center">
 
                 <div class="flex-column border-right">
                     <a class="navbar-brand h2" asp-area="User" asp-controller="Home" asp-action="Index">vecher</a>
                 </div>
 
-                <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+
                     <div class="flex-column col-5">
                         <div class="d-flex justify-content-between">
-                            <a class="nav-link text-dark "
-                            asp-area="Admin" asp-controller="Home" asp-action="Orders">Administrator</a>
-                            <a class="nav-link text-dark "
-                            asp-area="User" asp-controller="Account" asp-action="Login">About</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Orders">Administrator</a>
+                            <a class="nav-link text-dark" asp-area="User" asp-controller="Account" asp-action="Login">About</a>
                         </div>
                     </div>
 
@@ -24,14 +22,15 @@
                             <a class="nav-link text-dark" asp-area="User" asp-controller="Account" asp-action="Login">Login</a>
                         </div>
                     </div>
-
-                    <div class="flex-column col-1 border-left justify-content-end">
-                        <a class="nav-link text-dark" asp-area="User" asp-controller="Cart" asp-action="Index">
-                        Cart @await Component.InvokeAsync("Cart")</a>
-                    </div>
                 </div>
 
+                <div class="flex-column border-left">
+                    <a class="nav-link text-dark" asp-area="User" asp-controller="Cart" asp-action="Index">
+                        Cart @await Component.InvokeAsync("Cart")
+                    </a>
+                </div>
             </div>
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" 
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

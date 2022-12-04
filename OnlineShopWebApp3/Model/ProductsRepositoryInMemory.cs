@@ -13,7 +13,14 @@ namespace OnlineShopWebApp3.Model
             new Product("Product2", 200, "Description2", "/images/product2.png"),
             new Product("Product3", 300, "Description3", "/images/product3.png"),
             new Product("Product4", 400, "Description4", "/images/product4.png"),
-            new Product("Product5", 500, "Description5", "/images/product5.png")
+            new Product("Product5", 500, "Description5", "/images/product5.png"),
+            new Product("Product6", 100, "Description6", "/images/product6.png"),
+            new Product("Product7", 200, "Description7", "/images/product7.png"),
+            new Product("Product8", 300, "Description8", "/images/product8.png"),
+            new Product("Product9", 400, "Description9", "/images/product9.png"),
+            new Product("Product10", 500, "Description10", "/images/product10.png"),
+            new Product("Product11", 100, "Description11", "/images/product11.png"),
+            new Product("Product22", 200, "Description12", "/images/product12.png")
         };
 
         public List<Product> GetAll()

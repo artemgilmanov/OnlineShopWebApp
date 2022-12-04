@@ -1,10 +1,14 @@
 ﻿@model Login
 
-<div class="container-fluid text-center">
-    <h3 class="display-4">Login</h3>
+<div class="container-fluid">
+
+    <div class="row flex-grow-1 justify-content-center">
+        <h3 class="display-4">Login</h3>
+    </div>
 </div>
 <br />
 
+    <div class="flex-row">
 <form asp-area="User" asp-action="Login" asp-controller="Account">
 
     <div class="container-fluid">
@@ -46,3 +50,6 @@
         </div>
     </div>
 </form>
+    </div>
+
+
