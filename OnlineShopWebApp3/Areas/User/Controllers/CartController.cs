@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Db;
+using OnlineShopWebApp3.Areas.User.Model;
 using OnlineShopWebApp3.Helpers;
 using OnlineShopWebApp3.Model;
 using System;
@@ -35,13 +37,14 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
         public IActionResult Add(Guid productId)
         {
             var product = _productsRepository.TryGetById(productId);
+
             _cartsRepository.AddProduct(product, Constants.UserId);
             return RedirectToAction(nameof(Index));
         }
 
         public IActionResult RemoveItem(Guid itemId)
         {
-            _cartsRepository.RemoveItem(itemId);
+            _cartsRepository.RemoveItem(itemId, Constants.UserId);
             return RedirectToAction(nameof(Index));
         }
 

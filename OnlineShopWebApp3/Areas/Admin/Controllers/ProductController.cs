@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Db;
+using OnlineShop.Db.Model;
 using OnlineShopWebApp3.Areas.User.Model;
-using OnlineShopWebApp3.Model;
 using System;
 
 namespace OnlineShopWebApp3.Areas.Admin.Controllers
@@ -22,14 +23,21 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Product newProduct)
+        public IActionResult Add(ProductViewModel newProduct)
         {
             if (!ModelState.IsValid)
             {
                 return View(newProduct);
             }
 
-            _productsRepository.Add(newProduct);
+            var productDb = new Product()
+            {
+                Name = newProduct.Name,
+                Cost = newProduct.Cost,
+                Description = newProduct.Description
+            };
+
+            _productsRepository.Add(productDb);
             return RedirectToAction("Products", "Home", new { area = "Admin" });
         }
 
@@ -40,14 +48,21 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(Product proproductToReplaceWith)
+        public IActionResult Update(ProductViewModel proproductToReplaceWith)
         {
             if (!ModelState.IsValid)
             {
                 return View(proproductToReplaceWith);
             }
 
-            _productsRepository.Update(proproductToReplaceWith);
+            var productDb = new Product()
+            {
+                Name = proproductToReplaceWith.Name,
+                Cost = proproductToReplaceWith.Cost,
+                Description = proproductToReplaceWith.Description
+            };
+
+            _productsRepository.Update(productDb);
             return RedirectToAction("Products", "Home", new { area = "Admin" });
         }
 

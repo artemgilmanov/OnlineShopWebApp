@@ -1,8 +1,8 @@
-﻿using OnlineShopWebApp3.Areas.User.Model;
+﻿using OnlineShop.Db.Model;
 using System;
 using System.Collections.Generic;
 
-namespace OnlineShopWebApp3.Model
+namespace OnlineShop.Db
 {
     public interface IProductsRepository
     {

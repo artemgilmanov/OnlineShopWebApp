@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Db;
+using OnlineShopWebApp3.Areas.User.Model;
 using OnlineShopWebApp3.Helpers;
 using OnlineShopWebApp3.Model;
 using System;
@@ -17,7 +19,8 @@ namespace OnlineShopWebApp3.Views.Shared.ViewComponents.CartViewComponents
         public IViewComponentResult Invoke()
         {
             var cart = _cartsRepository.TryGetByUserId(Constants.UserId);
-            var productCount = Convert.ToString(cart?.Amount) ?? null;
+            var cartViewModel = MappingHelper.ToCartViewModel(cart);
+            var productCount = Convert.ToString(cartViewModel?.Amount) ?? null;
 
             return View("Cart", productCount);
         }

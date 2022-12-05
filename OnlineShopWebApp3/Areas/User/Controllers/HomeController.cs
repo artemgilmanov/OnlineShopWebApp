@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OnlineShopWebApp3.Model;
+using OnlineShop.Db;
+using OnlineShopWebApp3.Helpers;
 
 namespace OnlineShopWebApp3.Areas.User.Controllers
 {
@@ -17,7 +18,7 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
         public IActionResult Index()
         {
             var products = _productsRepository.GetAll();
-            return View(products);
+            return View(MappingHelper.ToProductViewModels(products));
         }
     }
 }

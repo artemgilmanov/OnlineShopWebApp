@@ -1,18 +1,22 @@
-﻿using OnlineShopWebApp3.Areas.User.Model;
-using OnlineShopWebApp3.Helpers;
+﻿using OnlineShop.Db.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace OnlineShopWebApp3.Model
+namespace OnlineShop.Db
 {
-    public class CartsRepositoryInMemory : ICartsRepository
+    public class CartsDbRepository : ICartsRepository
     {
-        private static List<Cart> Carts { get; } = new List<Cart>();
+        private readonly DataBaseContext _dataBaseContext;
+
+        public CartsDbRepository(DataBaseContext dataBaseContext)
+        {
+            _dataBaseContext = dataBaseContext;
+        }
 
         public Cart TryGetByUserId(string userId)
         {
-            var cart = Carts.FirstOrDefault(x => x.UserId == userId);
+            var cart = _dataBaseContext.Carts.FirstOrDefault(x => x.UserId == userId);
             return cart;
         }
 
@@ -24,7 +28,6 @@ namespace OnlineShopWebApp3.Model
             {
                 var newCart = new Cart()
                 {
-                    Id = Guid.NewGuid(),
                     UserId = userId,
                     Items = new List<CartItem>()
                     {
@@ -37,7 +40,7 @@ namespace OnlineShopWebApp3.Model
                     }
                 };
 
-                Carts.Add(newCart);
+                _dataBaseContext.Carts.Add(newCart);
             }
             else
             {
@@ -51,18 +54,18 @@ namespace OnlineShopWebApp3.Model
                 {
                     existingCart.Items.Add(new CartItem()
                     {
-                        Id = Guid.NewGuid(),
                         Product = product,
                         Amount = 1
                     });
                 }
             }
 
+            _dataBaseContext.SaveChanges();
         }
 
-        public void RemoveItem(Guid itemId)
+        public void RemoveItem(Guid itemId, string userId)
         {
-            var existingCart = TryGetByUserId(Constants.UserId);
+            var existingCart = TryGetByUserId(userId);
             var existingCartItem = existingCart?.Items?.FirstOrDefault(x => x.Id == itemId);
             existingCartItem.Amount--;
 
@@ -73,20 +76,26 @@ namespace OnlineShopWebApp3.Model
 
             if (existingCart.Items.Count <= 0)
             {
-                Carts.Remove(existingCart);
+                _dataBaseContext.Carts.Remove(existingCart);
             }
+
+            _dataBaseContext.SaveChanges();
         }
 
-        public void Clear(string UserId)
+        public void Clear(string userId)
         {
-            var existingCart = TryGetByUserId(Constants.UserId);
-            Carts.Remove(existingCart);
+            var existingCart = TryGetByUserId(userId);
+            _dataBaseContext.Carts.Remove(existingCart);
+            _dataBaseContext.SaveChanges();
+
         }
 
         public void AddOrder(Order order, string userId)
         {
-            var existingCart = TryGetByUserId(Constants.UserId);
+            var existingCart = TryGetByUserId(userId);
             existingCart.Orders.Add(order);
+            _dataBaseContext.SaveChanges();
+
         }
     }
 }

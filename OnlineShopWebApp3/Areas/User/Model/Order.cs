@@ -10,7 +10,7 @@ namespace OnlineShopWebApp3.Areas.User.Model
 
         public UserDeliveryInfo UserDeliveryInfo { get; set; }
 
-        public List<CartItem> Items { get; set; }
+        public List<CartItemViewModel> Items { get; set; }
 
         public OrderStatus Status { get; set; }
         public DateTime CreatedDateTime { get; set; }

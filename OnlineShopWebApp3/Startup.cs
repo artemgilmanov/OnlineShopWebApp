@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using OnlineShop.Db;
 using OnlineShopWebApp3.Model;
 using Serilog;
 
@@ -20,8 +22,15 @@ namespace OnlineShopWebApp3
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IProductsRepository, ProductsRepositoryInMemory>();
-            services.AddSingleton<ICartsRepository, CartsRepositoryInMemory>();
+            //get connection string from the configuration file
+            string connection = Configuration.GetConnectionString("online_shop");
+            // adding context as a service
+            services.AddDbContext<DataBaseContext>(options =>
+            options.UseSqlServer(connection)); 
+
+            services.AddTransient<IProductsRepository, ProductsDbRepository>();
+            services.AddTransient<ICartsRepository, CartsDbRepository>();
+
             services.AddSingleton<IOrdersRepository, OrdersRepositoryInMemory>();
             services.AddSingleton<IRolesRepository, RolesRepositoryInMemory>();
             services.AddSingleton<IUsersManager, UsersManager>();

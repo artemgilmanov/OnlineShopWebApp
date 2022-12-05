@@ -17,4 +17,8 @@
     <Folder Include="Areas\Brand\Model\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineShop.Db\OnlineShop.Db.csproj" />
+  </ItemGroup>
+
 </Project>

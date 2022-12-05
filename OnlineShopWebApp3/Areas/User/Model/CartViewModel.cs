@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace OnlineShopWebApp3.Areas.User.Model
 {
-    public class Cart
+    public class CartViewModel
     {
         public Guid Id { get; set; }
 
-        public List<CartItem> Items { get; set; }
+        public List<CartItemViewModel> Items { get; set; }
 
         public string UserId { get; set; }
 

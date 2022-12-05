@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Db;
+using OnlineShopWebApp3.Areas.User.Model;
+using OnlineShopWebApp3.Helpers;
 using OnlineShopWebApp3.Model;
+using System.Collections.Generic;
 
 namespace OnlineShopWebApp3.Areas.Admin.Controllers
 {
@@ -30,7 +34,7 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         public IActionResult Products()
         {
             var products = _productsRepository.GetAll();
-            return View(products);
+            return View(MappingHelper.ToProductViewModels(products));
         }
 
         public IActionResult Roles()

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Db;
 using OnlineShopWebApp3.Areas.User.Model;
 using OnlineShopWebApp3.Helpers;
 using OnlineShopWebApp3.Model;
@@ -48,10 +49,11 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
             if (ModelState.IsValid)
             {
                 var existingCart = _cartsRepository.TryGetByUserId(Constants.UserId);
+                var existingCartViewModel = MappingHelper.ToCartViewModel(existingCart);
                 var order = new Order()
                 {
                     UserDeliveryInfo = userDeliveryInfo,
-                    Items = existingCart.Items,
+                    Items = existingCartViewModel.Items,
                 };
 
                 _odersRepository.Add(order);
