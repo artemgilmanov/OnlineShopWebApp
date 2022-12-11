@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
-using OnlineShopWebApp3.Areas.User.Model;
 using OnlineShopWebApp3.Helpers;
-using OnlineShopWebApp3.Model;
 using System;
 
 namespace OnlineShopWebApp3.Areas.User.Controllers
@@ -31,7 +29,7 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
                 return View(cart);
             }
 
-            return View(cart);
+            return View(MappingHelper.ToCartViewModel(cart));
         }
 
         public IActionResult Add(Guid productId)

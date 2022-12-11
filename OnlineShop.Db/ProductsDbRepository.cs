@@ -33,18 +33,18 @@ namespace OnlineShop.Db
 
        
 
-        public List<Product> GetAll()
+        public List<ProductViewModel> GetAll()
         {
             return dataBaseContext.Products.ToList();
         }
 
-        public Product TryGetById(Guid productId)
+        public ProductViewModel TryGetById(Guid productId)
         {
             var product = dataBaseContext.Products.FirstOrDefault(x => x.Id == productId);
             return product;
         }
 
-        public void Add(Product newProduct)
+        public void Add(ProductViewModel newProduct)
         {
             newProduct.ImagePath = "/images/placeholder.png";
             dataBaseContext.Products.Add(newProduct);
@@ -57,7 +57,7 @@ namespace OnlineShop.Db
             dataBaseContext.Products.Remove(product);
         }
 
-        public void Update(Product productToReplaceWith)
+        public void Update(ProductViewModel productToReplaceWith)
         {
             var productToUpdate = dataBaseContext.Products.FirstOrDefault(x => x.Id == productToReplaceWith.Id);
 

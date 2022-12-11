@@ -23,14 +23,14 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(ProductViewModel newProduct)
+        public IActionResult Add(User.Model.ProductViewModel newProduct)
         {
             if (!ModelState.IsValid)
             {
                 return View(newProduct);
             }
 
-            var productDb = new Product()
+            var productDb = new OnlineShop.Db.Model.ProductViewModel()
             {
                 Name = newProduct.Name,
                 Cost = newProduct.Cost,
@@ -48,14 +48,14 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Update(ProductViewModel proproductToReplaceWith)
+        public IActionResult Update(User.Model.ProductViewModel proproductToReplaceWith)
         {
             if (!ModelState.IsValid)
             {
                 return View(proproductToReplaceWith);
             }
 
-            var productDb = new Product()
+            var productDb = new OnlineShop.Db.Model.ProductViewModel()
             {
                 Name = proproductToReplaceWith.Name,
                 Cost = proproductToReplaceWith.Cost,

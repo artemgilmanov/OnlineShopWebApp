@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace OnlineShop.Db.Model
 {
-    public class Product
+    public class ProductViewModel
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
@@ -12,7 +12,7 @@ namespace OnlineShop.Db.Model
         public string ImagePath { get; set; }
         public List<CartItem> CartItems { get; set; }
 
-        public Product()
+        public ProductViewModel()
         {
             CartItems = new List<CartItem>();
         }
