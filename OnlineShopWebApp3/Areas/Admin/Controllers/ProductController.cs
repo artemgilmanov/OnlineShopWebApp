@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
 using OnlineShop.Db.Model;
-using OnlineShopWebApp3.Areas.User.Model;
+using OnlineShopWebApp3.Helpers;
 using System;
 
 namespace OnlineShopWebApp3.Areas.Admin.Controllers
@@ -23,14 +23,14 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(User.Model.ProductViewModel newProduct)
+        public IActionResult Add(Product newProduct)
         {
             if (!ModelState.IsValid)
             {
                 return View(newProduct);
             }
 
-            var productDb = new OnlineShop.Db.Model.ProductViewModel()
+            var productDb = new Product()
             {
                 Name = newProduct.Name,
                 Cost = newProduct.Cost,
@@ -44,22 +44,24 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         public IActionResult Update(Guid productId)
         {
             var productToUpdate = _productsRepository.TryGetById(productId);
-            return View(productToUpdate);
+            return View(MappingHelper.ToProductViewModel(productToUpdate));
         }
 
         [HttpPost]
-        public IActionResult Update(User.Model.ProductViewModel proproductToReplaceWith)
+        public IActionResult Update(Product proproductToReplaceWith)
         {
             if (!ModelState.IsValid)
             {
                 return View(proproductToReplaceWith);
             }
 
-            var productDb = new OnlineShop.Db.Model.ProductViewModel()
+            var productDb = new Product()
             {
+                Id = proproductToReplaceWith.Id,
                 Name = proproductToReplaceWith.Name,
                 Cost = proproductToReplaceWith.Cost,
-                Description = proproductToReplaceWith.Description
+                Description = proproductToReplaceWith.Description,
+                ImagePath = proproductToReplaceWith.ImagePath
             };
 
             _productsRepository.Update(productDb);

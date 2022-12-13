@@ -6,7 +6,7 @@ namespace OnlineShopWebApp3.Helpers
 {
     public static class MappingHelper
     {
-        public static List<Areas.User.Model.ProductViewModel> ToProductViewModels(List<OnlineShop.Db.Model.ProductViewModel> products)
+        public static List<ProductViewModel> ToProductViewModels(List<Product> products)
         {
             var productsViewModels = new List<Areas.User.Model.ProductViewModel>();
 
@@ -17,14 +17,15 @@ namespace OnlineShopWebApp3.Helpers
             return productsViewModels;
         }
 
-        public static Areas.User.Model.ProductViewModel ToProductViewModel(OnlineShop.Db.Model.ProductViewModel product)
+        public static ProductViewModel ToProductViewModel(Product product)
         {
-            return  new Areas.User.Model.ProductViewModel()
+            return new ProductViewModel()
                 {
                     Id = product.Id,
                     Name = product.Name,
                     Cost = product.Cost,
-                    Description = product.Description
+                    Description = product.Description,
+                    ImagePath=product.ImagePath
                 };
         }
 

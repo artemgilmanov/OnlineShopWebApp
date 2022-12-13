@@ -6,7 +6,6 @@ using System;
 namespace OnlineShopWebApp3.Areas.User.Controllers
 {
     [Area("User")]
-
     public class CartController : Controller
     {
         private readonly ICartsRepository _cartsRepository;

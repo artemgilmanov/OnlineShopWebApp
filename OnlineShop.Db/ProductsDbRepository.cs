@@ -9,10 +9,10 @@ namespace OnlineShop.Db
     public class ProductsDbRepository : IProductsRepository
     {
 
-        private readonly DataBaseContext dataBaseContext;
+        private readonly DataBaseContext _dataBaseContext;
         public ProductsDbRepository(DataBaseContext dataBaseContext)
         {
-            this.dataBaseContext = dataBaseContext;
+            _dataBaseContext = dataBaseContext;
         }
 
         //private static List<Product> Products = new List<Product>()
@@ -33,33 +33,35 @@ namespace OnlineShop.Db
 
        
 
-        public List<ProductViewModel> GetAll()
+        public List<Product> GetAll()
         {
-            return dataBaseContext.Products.ToList();
+            return _dataBaseContext.Products.ToList();
         }
 
-        public ProductViewModel TryGetById(Guid productId)
+        public Product TryGetById(Guid productId)
         {
-            var product = dataBaseContext.Products.FirstOrDefault(x => x.Id == productId);
+            var product = _dataBaseContext.Products.FirstOrDefault(x => x.Id == productId);
             return product;
         }
 
-        public void Add(ProductViewModel newProduct)
+        public void Add(Product newProduct)
         {
-            newProduct.ImagePath = "/images/placeholder.png";
-            dataBaseContext.Products.Add(newProduct);
-            dataBaseContext.SaveChanges();
+            var imageCounter = _dataBaseContext.Products.Count();
+            newProduct.ImagePath = $"/images/product{imageCounter + 1}.png";
+            
+            _dataBaseContext.Products.Add(newProduct);
+            _dataBaseContext.SaveChanges();
         }
 
         public void Delete(Guid productId)
         {
-            var product = dataBaseContext.Products.FirstOrDefault(x => x.Id == productId);
-            dataBaseContext.Products.Remove(product);
+            var product = _dataBaseContext.Products.FirstOrDefault(x => x.Id == productId);
+            _dataBaseContext.Products.Remove(product);
         }
 
-        public void Update(ProductViewModel productToReplaceWith)
+        public void Update(Product productToReplaceWith)
         {
-            var productToUpdate = dataBaseContext.Products.FirstOrDefault(x => x.Id == productToReplaceWith.Id);
+            var productToUpdate = _dataBaseContext.Products.FirstOrDefault(x => x.Id == productToReplaceWith.Id);
 
             if (productToUpdate == null)
             {
@@ -69,8 +71,8 @@ namespace OnlineShop.Db
             productToUpdate.Name = productToReplaceWith.Name;
             productToUpdate.Cost = productToReplaceWith.Cost;
             productToUpdate.Description = productToReplaceWith.Description;
-            productToUpdate.ImagePath = productToReplaceWith.ImagePath;
-            dataBaseContext.SaveChanges();
+            //productToUpdate.ImagePath = productToReplaceWith.ImagePath;
+            _dataBaseContext.SaveChanges();
         }
     }
 }

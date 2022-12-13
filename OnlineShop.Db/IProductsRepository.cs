@@ -6,10 +6,10 @@ namespace OnlineShop.Db
 {
     public interface IProductsRepository
     {
-        void Add(ProductViewModel newProduct);
+        void Add(Product newProduct);
         void Delete(Guid productId);
-        List<ProductViewModel> GetAll();
-        ProductViewModel TryGetById(Guid productId);
-        void Update(ProductViewModel productToReplaceWith);
+        List<Product> GetAll();
+        Product TryGetById(Guid productId);
+        void Update(Product productToReplaceWith);
     }
 }

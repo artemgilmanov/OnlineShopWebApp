@@ -20,7 +20,7 @@ namespace OnlineShop.Db
             return _dataBaseContext.Carts.Include(x => x.Items).ThenInclude(x => x.Product).FirstOrDefault(x => x.UserId == userId);
         }
 
-        public void AddProduct(ProductViewModel product, string userId)
+        public void AddProduct(Product product, string userId)
         {
             var existingCart = TryGetByUserId(userId);
 
@@ -58,7 +58,7 @@ namespace OnlineShop.Db
                     {
                         Product = product,
                         Amount = 1,
-                        Cart=existingCart
+                        Cart = existingCart
                     });
                 }
             }
