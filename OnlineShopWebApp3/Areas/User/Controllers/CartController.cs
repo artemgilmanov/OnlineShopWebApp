@@ -10,11 +10,13 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
     {
         private readonly ICartsRepository _cartsRepository;
         private readonly IProductsRepository _productsRepository;
+        private readonly IFavouriteDbRepository _favouriteDbRepository;
 
-        public CartController(ICartsRepository cartsRepository, IProductsRepository productsRepository)
+        public CartController(ICartsRepository cartsRepository, IProductsRepository productsRepository, IFavouriteDbRepository favouriteDbRepository)
         {
             _cartsRepository = cartsRepository;
             _productsRepository = productsRepository;
+            _favouriteDbRepository = favouriteDbRepository;
         }
 
         public IActionResult Index()
@@ -24,7 +26,7 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
             if (cart == null)
             {
                 var message = "The cart is empty.";
-                ViewBag.EmpryCart = message;
+                ViewBag.EmptyCart = message;
                 return View(cart);
             }
 
@@ -36,6 +38,7 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
             var product = _productsRepository.TryGetById(productId);
 
             _cartsRepository.AddProduct(product, Constants.UserId);
+            _favouriteDbRepository.Remove(product.Id, Constants.UserId);
             return RedirectToAction(nameof(Index));
         }
 

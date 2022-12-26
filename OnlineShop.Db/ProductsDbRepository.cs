@@ -57,6 +57,7 @@ namespace OnlineShop.Db
         {
             var product = _dataBaseContext.Products.FirstOrDefault(x => x.Id == productId);
             _dataBaseContext.Products.Remove(product);
+            //_dataBaseContext.SaveChanges();
         }
 
         public void Update(Product productToReplaceWith)
@@ -71,7 +72,6 @@ namespace OnlineShop.Db
             productToUpdate.Name = productToReplaceWith.Name;
             productToUpdate.Cost = productToReplaceWith.Cost;
             productToUpdate.Description = productToReplaceWith.Description;
-            //productToUpdate.ImagePath = productToReplaceWith.ImagePath;
             _dataBaseContext.SaveChanges();
         }
     }

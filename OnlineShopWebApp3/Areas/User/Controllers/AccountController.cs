@@ -15,8 +15,6 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
             _usersManager = usersManager;
         }
 
-
-
         public IActionResult Register()
         {
             return View();

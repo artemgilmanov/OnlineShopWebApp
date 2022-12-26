@@ -3,7 +3,17 @@
 <div class="container-fluid">
     <div class="row pt-lg-5">
         <div class="col-6">
-        <img src=@Model.ImagePath class="img-fluid" alt="Image of a product.">
+            <div class="card-img-overlay">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="text-left">
+                            <a class="text-dark" asp-area="User" asp-controller="Home" asp-action="Index"><strong>←</strong></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <img src=@Model.ImagePath class="img-fluid" alt="Image of a product.">
         </div>
         <div class="col-6">
             <div>
@@ -25,7 +35,7 @@
             </div>
 
             <div>
-                <a class="btn btn-light" asp-area="User" asp-controller="Cart" asp-action="Add" asp-route-productId="@Model.Id" role="button">Add</a>
+                <a class="btn btn-light" role="button" asp-area="User" asp-controller="Cart" asp-action="Add" asp-route-productId="@Model.Id" >Add</a>
             </div>
         </div>
    

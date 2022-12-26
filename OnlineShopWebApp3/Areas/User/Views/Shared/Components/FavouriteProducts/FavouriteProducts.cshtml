@@ -1,0 +1,37 @@
+﻿@model List<ProductViewModel>
+
+@if (Model == null)
+{
+    <div class="flex-sm-row p-sm-5">
+        <div calss="col">
+            <div>
+                <h3>@ViewBag.EmptyFavourites</h3>
+                <a class="btn btn-link" asp-area="User" asp-controller="Home" asp-action="Index" role="button">Continue</a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row no-gutters">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-2">
+                <div class="card text-bg-dark rounded-0 border-bottom-0 border-left-0">
+                    <div class="card-header text-muted">
+                        <p class="card-text" asp-area="User" asp-controller="Product" asp-action="Index" asp-route-id="@product.Id">@product.Name: @product.Cost €</p>
+                    </div>
+
+                    <img src=@product.ImagePath class="card-img" href="/product/index?id=@product.Id" alt="Image of a product.">
+
+                    <div class="card-footer text-muted">
+                        <a class="btn btn-light" role="button" asp-area="User" asp-controller="Cart" asp-action="Add" asp-route-productId="@product.Id">Add To Card</a>
+                        <a class="btn btn-light" role="button" asp-area="User" asp-controller="Favourite" asp-action="Remove" asp-route-productId="@product.Id">Delete</a>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+}
