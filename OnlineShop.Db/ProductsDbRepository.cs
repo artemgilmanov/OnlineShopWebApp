@@ -40,8 +40,7 @@ namespace OnlineShop.Db
 
         public Product TryGetById(Guid productId)
         {
-            var product = _dataBaseContext.Products.FirstOrDefault(x => x.Id == productId);
-            return product;
+            return _dataBaseContext.Products.FirstOrDefault(x => x.Id == productId);
         }
 
         public void Add(Product newProduct)

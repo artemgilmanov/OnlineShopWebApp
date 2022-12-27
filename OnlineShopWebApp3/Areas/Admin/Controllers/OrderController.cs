@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OnlineShop.Db;
+using OnlineShop.Db.Model;
 using OnlineShopWebApp3.Areas.User.Model;
-using OnlineShopWebApp3.Model;
+using OnlineShopWebApp3.Helpers;
 using System;
 
 namespace OnlineShopWebApp3.Areas.Admin.Controllers
@@ -15,17 +17,17 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         {
             _ordersRepository = ordersRepository;
         }
-
+        
         public IActionResult Details(Guid orderId)
         {
             var order = _ordersRepository.TryGetById(orderId);
-            return View(order);
+            return View(order.ToOrderViewModel()) ;
         }
 
         //pass using method
-        public IActionResult UpdateOrderStatus(Guid orderId, OrderStatus status)
+        public IActionResult UpdateOrderStatus(Guid orderId, OrderStatusViewModel status)
         {
-           _ordersRepository.UpdateOrderStatus(orderId, status);
+           _ordersRepository.UpdateOrderStatus(orderId, (OrderStatus)(int)status);
             return RedirectToAction("Orders", "Home", new { area = "Admin" });
         }
     }

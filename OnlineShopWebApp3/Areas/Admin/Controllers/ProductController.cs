@@ -44,7 +44,7 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         public IActionResult Update(Guid productId)
         {
             var productToUpdate = _productsRepository.TryGetById(productId);
-            return View(MappingHelper.ToProductViewModel(productToUpdate));
+            return View(productToUpdate.ToProductViewModel());
         }
 
         [HttpPost]

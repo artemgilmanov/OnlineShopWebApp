@@ -18,7 +18,7 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
         public IActionResult Index()
         {
             var products = _productsRepository.GetAll();
-            return View(MappingHelper.ToProductViewModels(products));
+            return View(products.ToProductViewModels());
         }
     }
 }

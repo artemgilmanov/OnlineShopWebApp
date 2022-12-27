@@ -13,12 +13,13 @@ namespace OnlineShopWebApp3.Areas.User.Model
         {
 
         }
+
         public UserAccount(Login login)
         {
             Password = login.Password;
             Email = login.Email;
         }
-        public UserAccount(UserDeliveryInfo userDeliveryInfo)
+        public UserAccount(UserDeliveryInfoViewModel userDeliveryInfo)
         {
             Name = string.Format("{0} {1}", userDeliveryInfo.FirstName, userDeliveryInfo.LastName);
             PhoneNumber = Format(userDeliveryInfo.CountryCode, userDeliveryInfo.PhoneNumber); 

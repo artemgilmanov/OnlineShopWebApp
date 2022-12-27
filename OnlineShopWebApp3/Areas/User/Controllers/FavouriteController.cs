@@ -9,13 +9,15 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
 
     public class FavouriteController : Controller
     {
-        private readonly IFavouriteDbRepository _favoriteRepository;
+        private readonly IFavouriteRepository _favoriteRepository;
         private readonly IProductsRepository _productsRepository;
+        private readonly ICartsRepository _cartsRepository;
 
-        public FavouriteController(IFavouriteDbRepository favoriteRepository, IProductsRepository productsRepository)
+        public FavouriteController(IFavouriteRepository favoriteRepository, IProductsRepository productsRepository, ICartsRepository cartsRepository)
         {
             _favoriteRepository = favoriteRepository;
             _productsRepository = productsRepository;
+            _cartsRepository = cartsRepository;
         }
 
         public IActionResult FavouriteProducts()
@@ -29,9 +31,18 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
                 return View(products);
             }
 
-            return View(MappingHelper.ToProductViewModels(products)) ;
+            return View(products.ToProductViewModels()) ;
         }
-        public IActionResult Add(Guid productId)
+
+        public IActionResult AddToCard(Guid productId)
+        {
+            var product = _productsRepository.TryGetById(productId);
+
+            _cartsRepository.AddProduct(product, Constants.UserId);
+            _favoriteRepository.Remove(product.Id, Constants.UserId);
+            return RedirectToAction("Index", "Cart");
+        }
+        public IActionResult AddToFavourite(Guid productId)
         {
             var product = _productsRepository.TryGetById(productId);
             _favoriteRepository.Add(Constants.UserId, product);

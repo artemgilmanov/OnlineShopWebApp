@@ -12,7 +12,7 @@ namespace OnlineShopWebApp3.Areas.User.Model
 
         public string UserId { get; set; }
 
-        public List<Order> Orders { get; set; } = new List<Order>();
+        public List<OrderViewModel> Orders { get; set; } = new List<OrderViewModel>();
 
         public decimal TotalCost
         {

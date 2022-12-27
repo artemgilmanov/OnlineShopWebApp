@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
-using OnlineShopWebApp3.Areas.User.Model;
 using OnlineShopWebApp3.Helpers;
 using OnlineShopWebApp3.Model;
-using System.Collections.Generic;
+using System.Linq;
 
 namespace OnlineShopWebApp3.Areas.Admin.Controllers
 {
@@ -28,13 +27,13 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         public IActionResult Orders()
         {
             var orders = _ordersRepository?.GetAll();
-            return View(orders);
+            return View(orders.Select(x => x.ToOrderViewModel()).ToList());
         }
-
+        
         public IActionResult Products()
         {
             var products = _productsRepository.GetAll();
-            return View(MappingHelper.ToProductViewModels(products));
+            return View(products.ToProductViewModels());
         }
 
         public IActionResult Roles()

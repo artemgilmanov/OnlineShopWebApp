@@ -6,7 +6,8 @@ using System.Linq;
 
 namespace OnlineShop.Db
 {
-    public class FavouriteDbRepository: IFavouriteDbRepository
+
+    public class FavouriteDbRepository: IFavouriteRepository
     {
         private readonly DataBaseContext _dataBaseContext;
         public FavouriteDbRepository(DataBaseContext dataBaseContext)
@@ -22,14 +23,16 @@ namespace OnlineShop.Db
                 _dataBaseContext.FavouriteProducts.Add(new FavouriteProduct { Product = product, UserId = userId });
                 _dataBaseContext.SaveChanges();
             }
+        }
 
-        }
-        public void Clear(string userId)
-        {
-            var userFavouriteProducts = _dataBaseContext.FavouriteProducts.Where(u => u.UserId == userId).ToList();
-            _dataBaseContext.FavouriteProducts.RemoveRange(userFavouriteProducts);
-            _dataBaseContext.SaveChanges();
-        }
+        
+
+        //public void Clear(string userId)
+        //{
+        //    var userFavouriteProducts = _dataBaseContext.FavouriteProducts.Where(u => u.UserId == userId).ToList();
+        //    _dataBaseContext.FavouriteProducts.RemoveRange(userFavouriteProducts);
+        //    _dataBaseContext.SaveChanges();
+        //}
         public List<Product> GetAll(string userId)
         {
             return _dataBaseContext.FavouriteProducts.Where(x => x.UserId == userId)

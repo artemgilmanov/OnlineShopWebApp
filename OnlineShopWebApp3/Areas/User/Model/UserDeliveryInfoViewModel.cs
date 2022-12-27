@@ -2,7 +2,7 @@
 
 namespace OnlineShopWebApp3.Areas.User.Model
 {
-    public class UserDeliveryInfo
+    public class UserDeliveryInfoViewModel
     {
         [Required(ErrorMessage = "Please enter Firstname.")]
         [StringLength(15, MinimumLength = 2, ErrorMessage = "Firstname must have min 2 and max 15 symbols.")]
@@ -37,7 +37,6 @@ namespace OnlineShopWebApp3.Areas.User.Model
         public string Postcode { get; set; }
 
         public bool RememberAddress { get; set; }
-
 
         public bool IsValidPostcode(string postcode)
         {

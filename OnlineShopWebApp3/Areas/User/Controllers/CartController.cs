@@ -10,13 +10,13 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
     {
         private readonly ICartsRepository _cartsRepository;
         private readonly IProductsRepository _productsRepository;
-        private readonly IFavouriteDbRepository _favouriteDbRepository;
+        private readonly IFavouriteRepository _favouriteRepository;
 
-        public CartController(ICartsRepository cartsRepository, IProductsRepository productsRepository, IFavouriteDbRepository favouriteDbRepository)
+        public CartController(ICartsRepository cartsRepository, IProductsRepository productsRepository, IFavouriteRepository favouriteRepository)
         {
             _cartsRepository = cartsRepository;
             _productsRepository = productsRepository;
-            _favouriteDbRepository = favouriteDbRepository;
+            _favouriteRepository = favouriteRepository;
         }
 
         public IActionResult Index()
@@ -30,7 +30,7 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
                 return View(cart);
             }
 
-            return View(MappingHelper.ToCartViewModel(cart));
+            return View(cart.ToCartViewModel());
         }
 
         public IActionResult Add(Guid productId)
@@ -38,11 +38,18 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
             var product = _productsRepository.TryGetById(productId);
 
             _cartsRepository.AddProduct(product, Constants.UserId);
-            _favouriteDbRepository.Remove(product.Id, Constants.UserId);
+            //_favouriteRepository.Remove(product.Id, Constants.UserId);
             return RedirectToAction(nameof(Index));
         }
 
-        public IActionResult RemoveItem(Guid itemId)
+        public IActionResult Increase(Guid productId)
+        {
+            var product = _productsRepository.TryGetById(productId);
+            _cartsRepository.AddProduct(product, Constants.UserId);
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult Decrease(Guid itemId)
         {
             _cartsRepository.RemoveItem(itemId, Constants.UserId);
             return RedirectToAction(nameof(Index));

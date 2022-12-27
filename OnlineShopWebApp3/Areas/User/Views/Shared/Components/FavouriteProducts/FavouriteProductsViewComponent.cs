@@ -5,11 +5,12 @@ using System;
 
 namespace OnlineShopWebApp3.Areas.User.Controllers
 {
+
     public class FavouriteProductsViewComponent : ViewComponent
     {
-        private readonly IFavouriteDbRepository _favoriteRepository;
+        private readonly IFavouriteRepository _favoriteRepository;
 
-        public FavouriteProductsViewComponent(IFavouriteDbRepository favoriteRepository)
+        public FavouriteProductsViewComponent(IFavouriteRepository favoriteRepository)
         {
             _favoriteRepository = favoriteRepository;
         }
@@ -18,7 +19,7 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
         {
             var products = _favoriteRepository.GetAll(Constants.UserId);
 
-            return View("FavouriteProducts", MappingHelper.ToProductViewModels(products)) ;
+            return View("FavouriteProducts", products.ToProductViewModels()) ;
         }
        
     }

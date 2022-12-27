@@ -37,10 +37,10 @@ else
                                 <td>@item.Amount</td>
                                 <td>@item.Cost</td>
                                 <td>
-                                    <a class="btn btn-danger" asp-area="User" asp-controller="Cart" asp-action="RemoveItem" asp-route-itemId="@item.Id" role="button">-</a>
+                                    <a class="btn btn-danger" role="button" asp-area="User" asp-controller="Cart" asp-action="Decrease" asp-route-itemId="@item.Id" >-</a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger" asp-area="User" asp-controller="Cart" asp-action="Add" asp-route-productId="@item.Product.Id" role="button">+</a>
+                                    <a class="btn btn-danger" role="button" asp-area="User" asp-controller="Cart" asp-action="Increase" asp-route-productId="@item.Product.Id" >+</a>
                                 </td>
                             </tr>
                         }

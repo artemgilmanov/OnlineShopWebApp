@@ -20,7 +20,7 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
         public IActionResult Index(Guid id)
         {
             var product = _productsRepository.TryGetById(id);
-            return View(MappingHelper.ToProductViewModel(product));
+            return View(product.ToProductViewModel());
         }
     }
 }

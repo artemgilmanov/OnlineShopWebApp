@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace OnlineShopWebApp3.Helpers
 {
-    public class EnumHelper
+    public class DisplayName
     {
         public static string GetDisplayName(Enum enumValue)
         {

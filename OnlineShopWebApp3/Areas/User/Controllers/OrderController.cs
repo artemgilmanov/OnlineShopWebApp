@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
+using OnlineShop.Db.Model;
 using OnlineShopWebApp3.Areas.User.Model;
 using OnlineShopWebApp3.Helpers;
-using OnlineShopWebApp3.Model;
 
 namespace OnlineShopWebApp3.Areas.User.Controllers
 {
@@ -33,15 +33,15 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
         }
 
         [HttpPost]
-        public IActionResult CheckOut(UserDeliveryInfo userDeliveryInfo)
+        public IActionResult CheckOut(UserDeliveryInfoViewModel userDeliveryInfoViewModel)
         {
 
-            if (!userDeliveryInfo.IsValidPostcode(userDeliveryInfo.Postcode))
+            if (!userDeliveryInfoViewModel.IsValidPostcode(userDeliveryInfoViewModel.Postcode))
             {
                 ModelState.AddModelError("", "Postcode must have 5 symbols and value between 01000 und 99999.");
             }
 
-            if (userDeliveryInfo.PhoneNumber.Length < 10)
+            if (userDeliveryInfoViewModel.PhoneNumber.Length < 10)
             {
                 ModelState.AddModelError("", "Phone number must have minimum 10 symbols.");
             }
@@ -49,11 +49,11 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
             if (ModelState.IsValid)
             {
                 var existingCart = _cartsRepository.TryGetByUserId(Constants.UserId);
-                var existingCartViewModel = MappingHelper.ToCartViewModel(existingCart);
+
                 var order = new Order()
                 {
-                    UserDeliveryInfo = userDeliveryInfo,
-                    Items = existingCartViewModel.Items,
+                    UserDeliveryInfo = userDeliveryInfoViewModel.ToUserDeliveryInfo(),
+                    Items = existingCart.Items
                 };
 
                 _odersRepository.Add(order);
@@ -63,7 +63,6 @@ namespace OnlineShopWebApp3.Areas.User.Controllers
             }
 
             return View();
-
         }
     }
 }

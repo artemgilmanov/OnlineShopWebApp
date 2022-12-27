@@ -2,7 +2,7 @@
 
 namespace OnlineShopWebApp3.Areas.User.Model
 {
-    public enum OrderStatus
+    public enum OrderStatusViewModel
     {
         [Display(Name = "Created")]
         Created,

@@ -29,10 +29,10 @@ namespace OnlineShopWebApp3
             options.UseSqlServer(connection)); 
 
             services.AddTransient<IProductsRepository, ProductsDbRepository>();
-            services.AddTransient<IFavouriteDbRepository, FavouriteDbRepository>();
+            services.AddTransient<IFavouriteRepository, FavouriteDbRepository>();
             services.AddTransient<ICartsRepository, CartsDbRepository>();
 
-            services.AddSingleton<IOrdersRepository, OrdersRepositoryInMemory>();
+            services.AddTransient<IOrdersRepository, OrdersDbRepository>();
             services.AddSingleton<IRolesRepository, RolesRepositoryInMemory>();
             services.AddSingleton<IUsersManager, UsersManager>();
             services.AddControllersWithViews();
