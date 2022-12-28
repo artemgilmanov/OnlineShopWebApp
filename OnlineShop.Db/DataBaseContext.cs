@@ -14,7 +14,7 @@ namespace OnlineShop.Db
 
         public DataBaseContext(DbContextOptions<DataBaseContext> options):base (options)
         {
-            Database.EnsureCreated(); // creates database with the first request
+            Database.Migrate(); 
         }
     }
 }
