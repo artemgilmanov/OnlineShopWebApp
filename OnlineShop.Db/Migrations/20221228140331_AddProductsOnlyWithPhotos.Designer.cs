@@ -10,8 +10,8 @@ using OnlineShop.Db;
 namespace OnlineShop.Db.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20221228121912_Initialization")]
-    partial class Initialization
+    [Migration("20221228140331_AddProductsOnlyWithPhotos")]
+    partial class AddProductsOnlyWithPhotos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,6 +26,9 @@ namespace OnlineShop.Db.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreatedDateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
@@ -131,6 +134,80 @@ namespace OnlineShop.Db.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("d9903536-8872-47e5-8915-14d25e1b8fe5"),
+                            Cost = 0m,
+                            ImagePath = "/images/product1.png"
+                        },
+                        new
+                        {
+                            Id = new Guid("df118537-7451-43d5-a2ec-82400b9bf2e2"),
+                            Cost = 0m,
+                            ImagePath = "/images/product2.png"
+                        },
+                        new
+                        {
+                            Id = new Guid("e55bb71b-17c9-4e60-92dc-d616e350d773"),
+                            Cost = 0m,
+                            ImagePath = "/images/product3.png"
+                        },
+                        new
+                        {
+                            Id = new Guid("b6e03337-352e-49c2-84a2-2ec616190248"),
+                            Cost = 0m,
+                            ImagePath = "/images/product4.png"
+                        },
+                        new
+                        {
+                            Id = new Guid("a83c8d84-f929-4119-a8ab-137dfec3654d"),
+                            Cost = 0m,
+                            ImagePath = "/images/product5.png"
+                        },
+                        new
+                        {
+                            Id = new Guid("b52b1c28-4b81-4f81-8839-fc4e017eda30"),
+                            Cost = 0m,
+                            ImagePath = "/images/product6.png"
+                        },
+                        new
+                        {
+                            Id = new Guid("4c4e9d04-f200-4ddc-9251-4bc4ecd3f86a"),
+                            Cost = 0m,
+                            ImagePath = "/images/product7.png"
+                        },
+                        new
+                        {
+                            Id = new Guid("38cbfabe-b5f4-43c5-ac34-f2d3f46a6962"),
+                            Cost = 0m,
+                            ImagePath = "/images/product8.png"
+                        },
+                        new
+                        {
+                            Id = new Guid("49a6e5f2-a388-4163-bec9-4ead3e829494"),
+                            Cost = 0m,
+                            ImagePath = "/images/product9.png"
+                        },
+                        new
+                        {
+                            Id = new Guid("7b62cd0d-1f08-4f33-bc06-559d9d0fb7e5"),
+                            Cost = 0m,
+                            ImagePath = "/images/product10.png"
+                        },
+                        new
+                        {
+                            Id = new Guid("6ab8bc80-a1c8-4916-ba91-b53f9f42c011"),
+                            Cost = 0m,
+                            ImagePath = "/images/product11.png"
+                        },
+                        new
+                        {
+                            Id = new Guid("aa263bfe-875d-422f-a3c9-539e2c863f68"),
+                            Cost = 0m,
+                            ImagePath = "/images/product12.png"
+                        });
                 });
 
             modelBuilder.Entity("OnlineShop.Db.Model.UserDeliveryInfo", b =>
