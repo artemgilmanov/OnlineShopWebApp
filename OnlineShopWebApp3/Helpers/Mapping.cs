@@ -1,6 +1,5 @@
 ﻿using OnlineShop.Db.Model;
-using OnlineShopWebApp3.Areas.User.Model;
-using System;
+using OnlineShopWebApp3.Areas.Customer.Model;
 using System.Collections.Generic;
 
 namespace OnlineShopWebApp3.Helpers

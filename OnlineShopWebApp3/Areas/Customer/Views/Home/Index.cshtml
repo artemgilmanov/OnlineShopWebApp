@@ -1,0 +1,33 @@
+﻿@model List<ProductViewModel>
+
+<div class="row no-gutters">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4">
+                <div class="card text-bg-dark rounded-0 border-bottom-0 border-left-0">
+
+                    <img src=@product.ImagePath class="card-img" href="/product/index?id=@product.Id" alt="Image of a product.">
+
+                    <div class="card-img-overlay" id="vCardOverlay">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-left">
+                                    <a class="stretched-link text-dark" asp-area="Customer" asp-controller="Product" asp-action="Index" asp-route-id="@product.Id">@product.Name</a>
+                                    <p class="card-text">€ @product.Cost</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-right">
+                                    <a class="text-dark" id="vFavouriteProduct" role="button" asp-area="Customer" asp-controller="Favourite" asp-action="AddToFavourite" asp-route-productId="@product.Id">♡</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    </div>
+            </div>
+        }
+    </div>
+

@@ -7,12 +7,10 @@ namespace OnlineShopWebApp3
     public class Program
     {
         public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
+            => CreateHostBuilder(args).Build().Run();
+        
+        public static IHostBuilder CreateHostBuilder(string[] args) 
+            => Host.CreateDefaultBuilder(args)
             .UseSerilog((hostingContext,LoggerConfiguration) =>
             {
                 LoggerConfiguration
@@ -20,9 +18,8 @@ namespace OnlineShopWebApp3
                 .Enrich.FromLogContext()
                 .Enrich.WithProperty("Application Name", "Vecher");
             })
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+            .ConfigureWebHostDefaults(
+            webBuilder => webBuilder.UseStartup<Startup>());
+               
     }
 }

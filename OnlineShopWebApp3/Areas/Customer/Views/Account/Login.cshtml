@@ -1,0 +1,61 @@
+﻿@model Login
+
+<div class="container-fluid">
+
+    <div class="row flex-grow-1 justify-content-center">
+        <h3 class="display-4">Login</h3>
+    </div>
+</div>
+<br />
+
+    <div class="flex-row">
+<form asp-area="Customer" asp-action="Login" asp-controller="Account">
+
+    <div class="container-fluid">
+
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <div class="validation" asp-validation-summary="All"></div>
+            </div>
+        </div>
+        <br />
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <label asp-for="Email" class="col-form-label">Email</label><br />
+                <input asp-for="Email" class="form-control" />
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <label asp-for="Password">Password</label><br />
+                <input type="password" asp-for="Password" class="form-control" />
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <a class="text-dark" asp-controller="" asp-action="">Forgot your password?</a>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-4">
+                <label asp-for="Remember">Remember</label><br />
+                <input type="checkbox" value="true" asp-for="Remember" />
+            </div>
+        </div>
+        <br />
+        <div class=" row justify-content-center">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-light  btn-block" asp-area="Customer" asp-controller="Account" asp-action="Login">Login</button>
+                    </div>
+            </div>
+        <br />
+        <div class="row justify-content-center">
+            <div class="col-4 text-center">
+                <a class="text-dark" asp-area="Customer" asp-controller="Account" asp-action="Register">Create Account</a>
+            </div>
+        </div>
+    </div>
+</form>
+    </div>
+
+

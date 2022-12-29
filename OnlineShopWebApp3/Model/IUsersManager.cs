@@ -1,4 +1,4 @@
-﻿using OnlineShopWebApp3.Areas.User.Model;
+﻿using OnlineShopWebApp3.Areas.Customer.Model;
 using System.Collections.Generic;
 
 namespace OnlineShopWebApp3.Model

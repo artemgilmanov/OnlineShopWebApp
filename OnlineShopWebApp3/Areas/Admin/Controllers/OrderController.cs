@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
 using OnlineShop.Db.Model;
-using OnlineShopWebApp3.Areas.User.Model;
+using OnlineShopWebApp3.Areas.Customer.Model;
 using OnlineShopWebApp3.Helpers;
 using System;
 
