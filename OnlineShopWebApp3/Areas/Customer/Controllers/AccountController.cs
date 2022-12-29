@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineShopWebApp3.Areas.Customer.Model;
 using OnlineShopWebApp3.Model;
 using OnlineShop.Db.Model;
+using Microsoft.AspNetCore.Http;
+using System;
 
 namespace OnlineShopWebApp3.Areas.Customer.Controllers
 {
@@ -11,14 +13,19 @@ namespace OnlineShopWebApp3.Areas.Customer.Controllers
     public class AccountController : Controller
     {
         private readonly IUsersManager usersManager;
-        private readonly UserManager<User> _userManager;
-        private readonly SignInManager<User> _signInManager;
+        private readonly UserManager<OnlineShop.Db.Model.User> _userManager;
+        private readonly SignInManager<OnlineShop.Db.Model.User> _signInManager;
 
-        public AccountController(IUsersManager usersManager, UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(IUsersManager usersManager, UserManager<OnlineShop.Db.Model.User> userManager, SignInManager<OnlineShop.Db.Model.User> signInManager)
         {
             this.usersManager = usersManager;
             _userManager = userManager;
             _signInManager = signInManager;
+        }
+
+        public IActionResult Logout()
+        {
+            return RedirectToAction(nameof(HomeController.Index), "Home");
         }
 
         public IActionResult Register()
@@ -29,16 +36,39 @@ namespace OnlineShopWebApp3.Areas.Customer.Controllers
         [HttpPost]
         public IActionResult Register(Register register)
         {
-            //havent tested
-            if (register.FirstName == register.LastName)
-            {
-                ModelState.AddModelError("", "Firstname and Lastname must be different.");
-            }
-            //havent tested
-            if (register.FirstName == register.Password || register.LastName == register.Password)
-            {
-                ModelState.AddModelError("", "Password must not be the same as Firstname or Lastname.");
-            }
+            ////havent tested
+            //if (register.FirstName == register.LastName)
+            //{
+            //    ModelState.AddModelError("", "Firstname and Lastname must be different.");
+            //}
+            ////havent tested
+            //if (register.FirstName == register.Password || register.LastName == register.Password)
+            //{
+            //    ModelState.AddModelError("", "Password must not be the same as Firstname or Lastname.");
+            //}
+
+            ////check if a user exists
+            //var existingUser = _userManager.FindByEmailAsync(register.Email);
+            //if (existingUser!=null)
+            //{
+            //    ModelState.AddModelError("", "User already exists!");
+            //}
+
+            //// add user to DB
+            //var user = new OnlineShop.Db.Model.User()
+            //{
+            //    Email = register.Email,
+            //    SecurityStamp = Guid.NewGuid().ToString(),
+            //    UserName = $"{register.FirstName} {register.LastName}"
+            //};
+
+            //var result = _signInManager.PasswordSignInAsync(login.Email, login.Password, login.Remember, false).Result;
+
+
+
+
+            //assign the role
+
 
             if (ModelState.IsValid)
             {
@@ -55,9 +85,9 @@ namespace OnlineShopWebApp3.Areas.Customer.Controllers
             return RedirectToAction(nameof(Register));
         }
 
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl)
         {
-            return View();
+            return View(new Login { ReturnUrl = returnUrl});
 
             //return PartialView("_LoginPartial", new Login());
         }
@@ -97,11 +127,12 @@ namespace OnlineShopWebApp3.Areas.Customer.Controllers
                 
                 if (!result.Succeeded)
                 {
-                    ModelState.AddModelError("", "Wrong Password.");
+                    ModelState.AddModelError("", "User does not exist, please register.");
                     return View();
                 }
 
-                return RedirectToAction(nameof(HomeController.Index), nameof(HomeController));
+                //return RedirectToAction(nameof(HomeController.Index), nameof(HomeController));
+                return Redirect(login.ReturnUrl);
             }
 
             return View(login);

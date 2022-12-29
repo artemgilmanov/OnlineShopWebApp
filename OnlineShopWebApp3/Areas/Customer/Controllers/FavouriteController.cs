@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
 using OnlineShopWebApp3.Helpers;
 using System;
@@ -6,6 +7,7 @@ using System;
 namespace OnlineShopWebApp3.Areas.Customer.Controllers
 {
     [Area("Customer")]
+    [Authorize]
 
     public class FavouriteController : Controller
     {

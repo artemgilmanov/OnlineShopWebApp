@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
 using OnlineShop.Db.Model;
 using OnlineShopWebApp3.Areas.Customer.Model;
@@ -7,6 +8,8 @@ using OnlineShopWebApp3.Helpers;
 namespace OnlineShopWebApp3.Areas.Customer.Controllers
 {
     [Area("Customer")]
+    [Authorize]
+
 
     public class OrderController : Controller
     {

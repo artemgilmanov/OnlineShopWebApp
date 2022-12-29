@@ -1,12 +1,16 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
 using OnlineShopWebApp3.Helpers;
 using OnlineShopWebApp3.Model;
+using System;
 using System.Linq;
 
 namespace OnlineShopWebApp3.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    //[Area("Admin")]
+    [Area(Constants.AdminRoleName)]
+    [Authorize(Roles = Constants.AdminRoleName)]
 
     public class HomeController : Controller
     {

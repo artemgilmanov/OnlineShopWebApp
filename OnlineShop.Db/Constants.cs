@@ -4,10 +4,10 @@ namespace OnlineShop.Db
 {
     public static class Constants
     {
-        public static string UserId { get; } = "user1";
+        public const string UserId = "UserId";
 
-        public static string AdminRoleName = "Admin";
+        public const string AdminRoleName = "Admin";
 
-        public static string UserRoleName = "User";
+        public const string UserRoleName = "User";
     }
 }

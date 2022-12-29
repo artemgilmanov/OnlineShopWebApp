@@ -28,6 +28,7 @@ namespace OnlineShopWebApp3
         {
             //get connection string from the configuration file
             string connection = Configuration.GetConnectionString("online_shop");
+
             // adding context as a service for products
             services.AddDbContext<DataBaseContext>(options =>
             options.UseSqlServer(connection));
@@ -38,6 +39,7 @@ namespace OnlineShopWebApp3
 
             services.AddIdentity<User, IdentityRole>() // user type and role
                 .AddEntityFrameworkStores<IdentityContext>(); // database tape
+                //.AddDefaultTokenProviders();
 
             services.ConfigureApplicationCookie(options =>
             {
@@ -56,6 +58,7 @@ namespace OnlineShopWebApp3
             services.AddTransient<IOrdersRepository, OrdersDbRepository>();
             services.AddSingleton<IRolesRepository, RolesRepositoryInMemory>();
             services.AddSingleton<IUsersManager, UsersManager>();
+
             services.AddControllersWithViews();
         }
 

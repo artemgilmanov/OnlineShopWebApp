@@ -11,6 +11,8 @@
     <div class="flex-row">
 <form asp-area="Customer" asp-action="Login" asp-controller="Account">
 
+    <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+
     <div class="container-fluid">
 
         <div class="row justify-content-center">
