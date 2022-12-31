@@ -1,14 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
+using OnlineShopWebApp3.Areas.Account.Model;
+using OnlineShopWebApp3.Areas.Admin.Model;
 using OnlineShopWebApp3.Helpers;
-using OnlineShopWebApp3.Model;
-using System;
 using System.Linq;
 
 namespace OnlineShopWebApp3.Areas.Admin.Controllers
 {
-    //[Area("Admin")]
     [Area(Constants.AdminRoleName)]
     [Authorize(Roles = Constants.AdminRoleName)]
 
@@ -16,16 +16,16 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
     {
         private readonly IProductsRepository _productsRepository;
         private readonly IOrdersRepository _ordersRepository;
-        private readonly IRolesRepository _rolesRepository;
-        private readonly IUsersManager _usersManager;
+        private readonly UserManager<OnlineShop.Db.Model.User> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
 
-        public HomeController(IProductsRepository productsRepository, IOrdersRepository ordersRepository, IRolesRepository rolesRepository, IUsersManager usersManager)
+        public HomeController(IProductsRepository productsRepository, IOrdersRepository ordersRepository, RoleManager<IdentityRole> roleManager, UserManager<OnlineShop.Db.Model.User> userManager)
         {
             _productsRepository = productsRepository;
             _ordersRepository = ordersRepository;
-            _rolesRepository = rolesRepository;
-            _usersManager = usersManager;
+            _roleManager = roleManager;
+            _userManager = userManager;
         }
 
         public IActionResult Orders()
@@ -42,14 +42,14 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
 
         public IActionResult Roles()
         {
-            var roles = _rolesRepository.GetAll();
-            return View(roles);
+            var roles = _roleManager.Roles.ToList();
+            return View(roles.Select(x => new RoleViewModel {Name = x.Name}).ToList());
         }
 
         public IActionResult Users()
         {
-            var usersAccounts = _usersManager.GetAll();
-            return View(usersAccounts);
+            var users = _userManager.Users.ToList();
+            return View(users.Select(x => x.ToUserViewModel()).ToList());
         }
     }
 }

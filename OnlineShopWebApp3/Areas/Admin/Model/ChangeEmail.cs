@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OnlineShopWebApp3.Models
+namespace OnlineShopWebApp3.Areas.Admin.Model
 {
     public class ChangeEmail
     {

@@ -1,0 +1,65 @@
+﻿@model CartViewModel
+
+@if (Model == null)
+{
+    <div class="flex-sm-row p-sm-5">
+        <div calss="col">
+            <div>
+                <h3>@ViewBag.EmptyCart</h3>
+                <a class="btn btn-link" asp-area="" asp-controller="Home" asp-action="Index" role="button">Continue</a>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="flex-sm-row p-sm-5">
+        <div calss="col">
+            <div class="table-responsive">
+
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Summ</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <td>@item.Product.Name</td>
+                                <td>@item.Product.Cost</td>
+                                <td>@item.Amount</td>
+                                <td>@item.Cost</td>
+                                <td>
+                                    <a class="btn btn-danger" role="button" asp-area="" asp-controller="Cart" asp-action="Decrease" asp-route-itemId="@item.Id" >-</a>
+                                </td>
+                                <td>
+                                    <a class="btn btn-danger" role="button" asp-area="" asp-controller="Cart" asp-action="Increase" asp-route-productId="@item.Product.Id" >+</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="text-right">
+                    <h3>Total: @Model.TotalCost</h3>
+                </div>
+
+                <div>
+                    <a class="btn btn-danger" aps-area="" asp-controller="Home" asp-action="Index" role="button">Explore</a>
+                    <a class="btn btn-danger" asp-area="" asp-controller="Order" asp-action="CheckOut" role="button">Check out</a>
+                    <a class="btn btn-danger" asp-area="" asp-controller="Cart" asp-action="Clear" role="button">Clear</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@await Component.InvokeAsync("FavouriteProducts")

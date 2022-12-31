@@ -1,27 +1,31 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
+using OnlineShopWebApp3.Areas.Account.Model;
 using OnlineShopWebApp3.Areas.Admin.Model;
-using OnlineShopWebApp3.Model;
 
 namespace OnlineShopWebApp3.Areas.Admin.Controllers
 {
-    //[Area("Admin")]
     [Area(Constants.AdminRoleName)]
     [Authorize(Roles = Constants.AdminRoleName)]
 
     public class RoleController : Controller
     {
-        private readonly IRolesRepository _rolesRepository;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public RoleController(IRolesRepository rolesRepository)
+        public RoleController(RoleManager<IdentityRole> roleManager)
         {
-            _rolesRepository = rolesRepository;
+            _roleManager = roleManager;
         }
 
         public IActionResult Delete(string name)
         {
-            _rolesRepository.Delete(name);
+            var role = _roleManager.FindByNameAsync(name).Result;
+            if (role != null)
+            {
+                _roleManager.DeleteAsync(role).Wait();
+            }
             return RedirectToAction("Roles", "Home", new { area = "Admin" });
         }
 
@@ -31,17 +35,29 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Role role)
+        public IActionResult Add(RoleViewModel role)
         {
-            if (_rolesRepository.TryGetByName(role.Name) != null)
+            var result = _roleManager.CreateAsync(new IdentityRole(role.Name)).Result;
+            if (result.Succeeded)
             {
-                ModelState.AddModelError("", "This role already exists.");
-            }
-            if (ModelState.IsValid)
-            {
-                _rolesRepository.Add(role);
                 return RedirectToAction("Roles", "Home", new { area = "Admin" });
             }
+            else
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+            }
+            //if (_roleManager.TryGetByName(role.Name) != null)
+            //{
+            //    ModelState.AddModelError("", "This role already exists.");
+            //}
+            //if (ModelState.IsValid)
+            //{
+            //    _roleManager.Add(role);
+            //    return RedirectToAction("Roles", "Home", new { area = "Admin" });
+            //}
 
             return View(role);
             

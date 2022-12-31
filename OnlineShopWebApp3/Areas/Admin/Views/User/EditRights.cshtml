@@ -1,0 +1,32 @@
+﻿@model EditRightsViewModel
+
+<form method="post">
+
+    <div>
+        <h3> Current roles for @Model.UserName </h3>
+    </div>
+
+    <input type="hidden" name="name" value="@Model.UserName">
+
+    @foreach(var role in Model.AllRoles)
+    {
+        
+    <div class="form-check">
+        @if(Model.UserRoles.Contains(role))
+        {
+        <input class="form-check-input" name="userRolesViewModel[@role.Name]" type="checkbox" value="true" checked />
+        <label class="form-check-label" for="flexCheckDefault">@role.Name</label>
+        }
+        else
+        {
+        <input class="form-check-input" name="userRolesViewModel[@role.Name]" type="checkbox" value="true" />
+        <label class="form-check-label" for="flexCheckDefault">@role.Name</label>
+        }
+    </div>
+       
+    }
+    <div>
+        <button type="submit"asp-area="Admin" asp-controller="User" asp-action="EditRights"> Update </button>
+    </div>
+
+</form>

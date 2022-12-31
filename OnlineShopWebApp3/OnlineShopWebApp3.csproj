@@ -18,11 +18,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Areas\Brand\Model\" />
+    <ProjectReference Include="..\OnlineShop.Db\OnlineShop.Db.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OnlineShop.Db\OnlineShop.Db.csproj" />
+    <Folder Include="Areas\Account\Views\Shared\" />
+    <Folder Include="Areas\Brand\Views\Shared\" />
   </ItemGroup>
 
 </Project>

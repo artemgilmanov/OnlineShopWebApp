@@ -1,5 +1,6 @@
 ﻿using OnlineShop.Db.Model;
-using OnlineShopWebApp3.Areas.Customer.Model;
+using OnlineShopWebApp3.Areas.Admin.Model;
+using OnlineShopWebApp3.Areas.Brand.Model;
 using System.Collections.Generic;
 
 namespace OnlineShopWebApp3.Helpers
@@ -126,6 +127,16 @@ namespace OnlineShopWebApp3.Helpers
                 CreatedDateTime = order.CreatedDateTime,
             };
         }
-       
+
+        public static UserViewModel ToUserViewModel(this User user)
+        {
+            return new UserViewModel
+            {
+                Name = user.UserName,
+                Phone = user.PhoneNumber,
+                Email = user.Email
+            };
+        }
+
     }
 }

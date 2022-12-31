@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace OnlineShop.Db
+﻿namespace OnlineShop.Db
 {
     public static class Constants
     {

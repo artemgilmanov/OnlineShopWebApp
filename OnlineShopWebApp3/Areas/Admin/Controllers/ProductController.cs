@@ -7,7 +7,6 @@ using System;
 
 namespace OnlineShopWebApp3.Areas.Admin.Controllers
 {
-    //[Area("Admin")]
     [Area(Constants.AdminRoleName)]
     [Authorize(Roles = Constants.AdminRoleName)]
 

@@ -25,14 +25,6 @@ namespace OnlineShop.Db
             }
         }
 
-        
-
-        //public void Clear(string userId)
-        //{
-        //    var userFavouriteProducts = _dataBaseContext.FavouriteProducts.Where(u => u.UserId == userId).ToList();
-        //    _dataBaseContext.FavouriteProducts.RemoveRange(userFavouriteProducts);
-        //    _dataBaseContext.SaveChanges();
-        //}
         public List<Product> GetAll(string userId)
         {
             return _dataBaseContext.FavouriteProducts.Where(x => x.UserId == userId)

@@ -1,5 +1,4 @@
 ﻿using System;
-using OnlineShop.Db.Model;
 
 namespace OnlineShop.Db.Model
 {
