@@ -127,7 +127,6 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
             _userManager.RemoveFromRolesAsync(user, userRoles).Wait();
             _userManager.AddToRolesAsync(user, userSelectedRoles).Wait();
 
-            //return RedirectToAction(nameof(Details), name);
             return Redirect($"/Admin/User/Details?name={name}");
         }
     }
