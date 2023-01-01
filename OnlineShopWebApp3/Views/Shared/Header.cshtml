@@ -15,11 +15,14 @@
                             @if (User.IsInRole(Constants.AdminRoleName))
                             {
                                 <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Orders"> Administrator </a>
+
                             }
                             else
                             {
-                                  <a class="nav-link text-dark" asp-area="Brand" asp-controller="Home" asp-action="Index"> @User.Identity.Name </a>
+                                <a class="nav-link disabled" href="#"> </a>
+                                @*<a class="nav-link text-dark" asp-area="Brand" asp-controller="Home" asp-action="Index"> @User.Identity.Name </a>*@
                             }
+
                             <a class="nav-link text-dark" asp-area="Brand" asp-controller="About" asp-action="Index"> About </a>
 
                         </div>
@@ -27,25 +30,45 @@
 
                     <div class="flex-column col-5">
                         <div class="d-flex justify-content-between">
-                            <a class="nav-link text-dark" asp-area="Brand" asp-controller="Home" asp-action="Index"> Shop </a>
-                            
-                            @if (User.Identity.IsAuthenticated)
+                            <div class="nav-item dropright">
+                                @*<a class="nav-link text-dark" asp-area="Brand" asp-controller="Home" asp-action="Index"> Filter </a>*@
+                                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Filter
+                                </a>
+                                <div class="dropdown-menu rounded-0" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Cup</a>
+                                    <a class="dropdown-item" href="#">Mug</a>
+                                    <a class="dropdown-item" href="#">Teapot</a>
+                                    <a class="dropdown-item" href="#">Cup & plate</a>
+                                    <a class="dropdown-item" href="#">Bowl</a>
+                                </div>
+                            </div>
+
+                            @if (User.IsInRole(Constants.UserRoleName))
                             {
-                                <a class="nav-link text-dark" asp-area="Account" asp-controller="Authorization" asp-action="Logout"> Logout </a>
+                                <a class="nav-link text-dark" asp-area="Account" asp-controller="Cart" asp-action="Index">
+                                    Cart @await Component.InvokeAsync("Cart")
+                                </a>
                             }
                             else
                             {
-                                <a class="nav-link text-dark" asp-area="Account" asp-controller="Authorization" asp-action="Login"> Login </a>
+                                <a class="nav-link disabled" href="#"> </a>
+                                @*<a class="nav-link text-dark" asp-area="Brand" asp-controller="Home" asp-action="Index"> @User.Identity.Name </a>*@
                             }
-
                         </div>
                     </div>
                 </div>
 
                 <div class="flex-column border-left">
-                    <a class="nav-link text-dark" asp-area="Account" asp-controller="Cart" asp-action="Index">
-                        Cart @await Component.InvokeAsync("Cart")
-                    </a>
+                  
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <a class="nav-link text-dark" asp-area="Account" asp-controller="Authorization" asp-action="Logout"> Logout </a>
+                    }
+                    else
+                    {
+                        <a class="nav-link text-dark" asp-area="Account" asp-controller="Authorization" asp-action="Login"> Login </a>
+                    }
                 </div>
             </div>
 
