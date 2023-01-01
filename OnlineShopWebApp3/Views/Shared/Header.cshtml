@@ -1,29 +1,18 @@
 ﻿<header>
-    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom fixed-top  pt-0 pb-0">
+    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom fixed-top p-0 p-0">
         <div class="container-fluid">
             <div class="row flex-grow-1 align-content-center">
 
                 <div class="flex-column border-right">
-                    <a class="navbar-brand" asp-area="Brand" asp-controller="Home" asp-action="Index">vecher</a>
+                    <a class="nav-link text-dark" asp-area="Brand" asp-controller="Home" asp-action="Index"><strong> vecher </strong></a>
                 </div>
 
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 
                     <div class="flex-column col-5">
                         <div class="d-flex justify-content-between align-content-center">
-
-                            @if (User.IsInRole(Constants.AdminRoleName))
-                            {
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Orders"> Administrator </a>
-                            }
-                            else
-                            {
-                                <a class="nav-link disabled" href="#"> </a>
-                                @*<a class="nav-link text-dark" asp-area="Brand" asp-controller="Home" asp-action="Index"> @User.Identity.Name </a>*@
-                            }
-
+                            <a class="nav-link disabled" href="#"> </a>
                             <a class="nav-link text-dark" asp-area="Brand" asp-controller="About" asp-action="Index"> About </a>
-
                         </div>
                     </div>
 
@@ -49,11 +38,11 @@
                                     Cart @await Component.InvokeAsync("Cart")
                                 </a>
                             }
-                            else
+                            @if (User.IsInRole(Constants.AdminRoleName))
                             {
-                                <a class="nav-link disabled" href="#"> </a>
-                                @*<a class="nav-link text-dark" asp-area="Brand" asp-controller="Home" asp-action="Index"> @User.Identity.Name </a>*@
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Orders"> Administrator </a>
                             }
+
                         </div>
                     </div>
                 </div>
