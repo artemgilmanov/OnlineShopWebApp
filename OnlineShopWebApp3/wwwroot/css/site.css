@@ -8,7 +8,25 @@ for details on configuring this project to bundle and minify static web assets. 
 
 .vBody {
     padding-top: 35px;
+    /*height: 100%;*/
 }
+
+.vFullscreen {
+    /* Set the height to match that of the viewport. */
+    height: 90vh;
+    /* Set the width to match that of the viewport. */
+    /*width: 100vw;*/
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/*.vLoginContainer {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}*/
 
 #vFavouriteProduct {
     position: relative;

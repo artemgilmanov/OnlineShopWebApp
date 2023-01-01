@@ -1,64 +1,67 @@
 ﻿@model Login
 
-<div class="container-fluid">
+    <form asp-area="" asp-action="Login" asp-controller="Account">
 
-    <div class="row flex-grow-1 justify-content-center">
-        <h3 class="display-4">Login</h3>
-    </div>
-</div>
-<br />
+        <div class="d-flex vFullscreen">
 
-    <div class="flex-row">
-<form asp-area="" asp-action="Login" asp-controller="Account">
+                <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
 
-    <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                <div class="container-fluid">
 
-    <div class="container-fluid">
+                    <div class="row justify-content-center">
+                        <h3 class="display-4">Login</h3>
+                    </div>
+                    <br />
 
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <div class="validation" asp-validation-summary="All"></div>
-            </div>
-        </div>
-        <br />
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <label asp-for="Email" class="col-form-label">Email</label><br />
-                <input asp-for="Email" class="form-control" />
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <label asp-for="Password">Password</label><br />
-                <input type="password" asp-for="Password" class="form-control" />
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <a class="text-dark" asp-controller="" asp-action="">Forgot your password?</a>
-            </div>
-        </div>
-        <br />
-        <div class="form-row justify-content-center">
-            <div class="col-4 text-center">
-                    <input class="form-check-input" type="checkbox" value="true" asp-for="Remember" />
-                    <label class="form-check-label" asp-for="Remember"> Remember me </label>
-            </div>
-        </div>
-        <br />
-        <div class=" row justify-content-center">
-            <div class="col-4">
-                <button type="submit" class="btn btn-light  btn-block" asp-area="Account" asp-controller="Authorization" asp-action="Login">Login</button>
-            </div>
-        </div>
-        <br />
-        <div class="row justify-content-center">
-            <div class="col-4 text-center">
-                <a class="text-dark" asp-area="Account" asp-controller="Authorization" asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl">Create Account</a>
-            </div>
-        </div>
-    </div>
-</form>
-    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <div class="validation" asp-validation-summary="All"></div>
+                        </div>
+                    </div>
 
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <label asp-for="Email" class="col-form-label">Email</label><br />
+                            <input asp-for="Email" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <label asp-for="Password">Password</label><br />
+                            <input type="password" asp-for="Password" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <a class="text-dark" href="#">Forgot your password?</a>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="form-row justify-content-center">
+                        <div class="col-4 text-center">
+                            <input class="form-check-input" type="checkbox" value="true" asp-for="Remember" />
+                            <label class="form-check-label" asp-for="Remember"> Remember me </label>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class=" row justify-content-center">
+                        <div class="col-4">
+                            <button type="submit" class="btn btn-light  btn-block" asp-area="Account" asp-controller="Authorization" asp-action="Login">Login</button>
+                        </div>
+                    </div>
+                    <br />
+
+                    <div class="row justify-content-center">
+                        <div class="col-4 text-center">
+                            <a class="text-dark" asp-area="Account" asp-controller="Authorization" asp-action="Register" asp-route-returnUrl="@Model.ReturnUrl">Create Account</a>
+                        </div>
+                    </div>
+                    <br />
+
+                </div>
+            </div>
+
+    </form>
 
