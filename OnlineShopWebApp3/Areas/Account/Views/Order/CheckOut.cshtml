@@ -1,90 +1,96 @@
 ﻿@model UserDeliveryInfoViewModel
 
-<div class="container-fluid text-center">
-    <h3 class="display-4">Checkout</h3>
-</div>
-<br />
+    <form asp-area="" asp-action="CheckOut" asp-controller="Order">
 
-<form asp-area="" asp-action="CheckOut" asp-controller="Order">
+        <div class="d-flex vFullscreen">
 
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-6">
-                <div class="validation" asp-validation-summary="All"></div>
-            </div>
-        </div>
-        <div class="form-row justify-content-center">
-            <div class="col-md-3">
-                <label asp-for="FirstName" >Firstname</label><br />
-                <input asp-for="FirstName" class="form-control" />
-            </div>
-            <div class="col-md-3">
-                <label asp-for="LastName">Lastname</label><br />
-                <input asp-for="LastName" class="form-control" />
-            </div>
-        </div>
-        <div class="form-row justify-content-center">
-            <div class="col-md-6">
-                <label asp-for="Address">Street and house number</label><br />
-                <input asp-for="Address" class="form-control" />
-            </div>
-        </div>
-        <div class="form-row justify-content-center">
-            <div class="col-md-6">
-                <label asp-for="AddressOptional">Aditional address (optional)</label><br />
-                <input asp-for="AddressOptional" class="form-control" />
-            </div>
-        </div>
-        <div class="form-row justify-content-center">
-            <div class="col-md-2">
-                <label asp-for="City">City</label><br />
-                <input asp-for="City" class="form-control" />
-            </div>
-            <div class="col-md-2">
-                    <label asp-for="State">State</label><br />
-                <select asp-for="State" class="custom-select">
-                    <option >Please select one ...</option>
-                    @foreach (var state in County.States)
-                    {
-                        <option>@state</option>
-                    }
-                    </select>
-            </div>
-            <div class="col-md-2">
-                <label asp-for="Postcode">Postcode</label><br />
-                <input asp-for="Postcode" class="form-control" />
+            <div class="container-fluid">
+
+                <div class="row justify-content-center">
+                    <h3 class="display-4"> Checkout </h3>
+                </div>
+                <br />
+
+                <div class="row justify-content-center">
+                    <div class="col-6">
+                        <div class="validation" asp-validation-summary="All"></div>
+                    </div>
+                </div>
+
+                <div class="form-row justify-content-center">
+                    <div class="col-md-3">
+                        <label asp-for="FirstName">Firstname</label><br />
+                        <input asp-for="FirstName" class="form-control" />
+                    </div>
+                    <div class="col-md-3">
+                        <label asp-for="LastName">Lastname</label><br />
+                        <input asp-for="LastName" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <div class="col-md-6">
+                        <label asp-for="Address">Street and house number</label><br />
+                        <input asp-for="Address" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <div class="col-md-6">
+                        <label asp-for="AddressOptional">Aditional address (optional)</label><br />
+                        <input asp-for="AddressOptional" class="form-control" />
+                    </div>
+                </div>
+                <div class="form-row justify-content-center">
+                    <div class="col-md-2">
+                        <label asp-for="City">City</label><br />
+                        <input asp-for="City" class="form-control" />
+                    </div>
+                    <div class="col-md-2">
+                        <label asp-for="State">State</label><br />
+                        <select asp-for="State" class="custom-select">
+                            <option>Please select one ...</option>
+                            @foreach (var state in County.States)
+                            {
+                                <option>@state</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label asp-for="Postcode">Postcode</label><br />
+                        <input asp-for="Postcode" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="form-row justify-content-center">
+                     @*<div class="col-md-2">
+                            <label asp-for="PhoneNumber">Country code</label><br />
+                            <select asp-for="@Model.CountryCode"
+                                    asp-items="@Html.GetEnumSelectList<County.Code>()" class="form-control">
+                            </select>
+                        </div>*@
+                    <div class="col-md-1">
+                        <label asp-for="CountryCode" class="visually-hidden">Country code</label>
+                        <input readonly class="form-control-plaintext" asp-for="CountryCode" value="+49">
+                    </div>
+                    <div class="col-md-5">
+                        <label asp-for="PhoneNumber">Phone number</label><br />
+                        <input class="form-control" asp-for="PhoneNumber" placeholder="(###) ####-####" />
+                    </div>
+                </div>
+                <br />
+                <div class="form-row justify-content-center">
+                    <div class="col-md-6">
+                        <input type="checkbox" value="true" asp-for="RememberAddress" />
+                        <label asp-for="RememberAddress">Remember adress</label>
+                    </div>
+                </div>
+                <br />
+                <div class="form-row justify-content-center">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-light  btn-block" asp-area="Account" asp-controller="Order" asp-action="checkOut">Checkout</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="form-row justify-content-center">
-           @* <div class="col-md-2">
-                <label asp-for="PhoneNumber">Country code</label><br />
-                <select asp-for="@Model.CountryCode"
-                        asp-items="@Html.GetEnumSelectList<CountryCode>()" class="form-control">
-                </select>
-            </div>*@
-            <div class="col-md-1">
-                <label asp-for="CountryCode" class="visually-hidden">Country code</label>
-                <input readonly class="form-control-plaintext" asp-for="CountryCode" value="+49">
-            </div>
-            <div class="col-md-5">
-                <label asp-for="PhoneNumber">Phone number</label><br />
-                <input class="form-control" asp-for="PhoneNumber" placeholder="(###) ####-####"/>
-            </div>
-        </div>
-        <br />
-        <div class="form-row justify-content-center">
-            <div class="col-md-6">
-                <input type="checkbox" value="true" asp-for="RememberAddress" />
-                <label asp-for="RememberAddress">Remember adress</label>
-            </div>
-        </div>
-        <br />
-        <div class="form-row justify-content-center">
-            <div class="col-md-6">
-                <button type="submit" class="btn btn-light  btn-block" asp-area="" asp-controller="Order" asp-action="checkOut">Checkout</button>
-            </div>
-        </div>        
-    </div>
-</form>
+    </form>
 

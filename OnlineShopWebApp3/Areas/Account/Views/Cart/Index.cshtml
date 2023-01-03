@@ -37,10 +37,10 @@ else
                                 <td>@item.Amount</td>
                                 <td>@item.Cost</td>
                                 <td>
-                                    <a class="btn btn-danger" role="button" asp-area="" asp-controller="Cart" asp-action="Decrease" asp-route-itemId="@item.Id" >-</a>
+                                    <a class="btn btn-danger" role="button" asp-area="Account" asp-controller="Cart" asp-action="Decrease" asp-route-itemId="@item.Id" >-</a>
                                 </td>
                                 <td>
-                                    <a class="btn btn-danger" role="button" asp-area="" asp-controller="Cart" asp-action="Increase" asp-route-productId="@item.Product.Id" >+</a>
+                                    <a class="btn btn-danger" role="button" asp-area="Account" asp-controller="Cart" asp-action="Increase" asp-route-productId="@item.Product.Id" >+</a>
                                 </td>
                             </tr>
                         }
@@ -52,9 +52,9 @@ else
                 </div>
 
                 <div>
-                    <a class="btn btn-danger" aps-area="" asp-controller="Home" asp-action="Index" role="button">Explore</a>
-                    <a class="btn btn-danger" asp-area="" asp-controller="Order" asp-action="CheckOut" role="button">Check out</a>
-                    <a class="btn btn-danger" asp-area="" asp-controller="Cart" asp-action="Clear" role="button">Clear</a>
+                    <a class="btn btn-danger" role="button" asp-area="Brand" asp-controller="Home" asp-action="Index" > Explore </a>
+                    <a class="btn btn-danger" role="button" asp-area="Account" asp-controller="Order" asp-action="CheckOut"> Check out </a>
+                    <a class="btn btn-danger" role="button" asp-area="Account" asp-controller="Cart" asp-action="Clear" > Clear </a>
                 </div>
 
             </div>
