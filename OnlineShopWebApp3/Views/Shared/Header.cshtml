@@ -24,11 +24,18 @@
                                     Filter
                                 </a>
                                 <div class="dropdown-menu rounded-0" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Cup</a>
-                                    <a class="dropdown-item" href="#">Mug</a>
-                                    <a class="dropdown-item" href="#">Teapot</a>
-                                    <a class="dropdown-item" href="#">Cup & plate</a>
-                                    <a class="dropdown-item" href="#">Bowl</a>
+                                    <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Filter"
+                                       asp-route-category="@Constants.Category.cup">Cup</a>
+                                    <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Filter"
+                                       asp-route-category="@Constants.Category.mug">Mug</a>
+                                    <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Filter"
+                                       asp-route-category="@Constants.Category.teapot">Teapot</a>
+                                    <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Filter"
+                                       asp-route-category="@Constants.Category.set">Set</a>
+                                    <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Filter"
+                                       asp-route-category="@Constants.Category.bowl">Bowl</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Index">Clear</a>
                                 </div>
                             </div>
 
@@ -40,7 +47,7 @@
                             }
                             @if (User.IsInRole(Constants.AdminRoleName))
                             {
-                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Orders"> Administrator </a>
+                                <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="Products"> Administrator </a>
                             }
 
                         </div>

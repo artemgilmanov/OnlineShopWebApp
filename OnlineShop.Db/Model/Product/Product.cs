@@ -8,8 +8,10 @@ namespace OnlineShop.Db.Model
         public Guid Id { get; set; }
         public string Name { get; set; }
         public decimal Cost { get; set; }
-        public string Description { get; set; }
+        public string Material { get; set; }
+        public string Size { get; set; }
         public string ImagePath { get; set; }
+        public string Category { get; set; }
         public List<CartItem> CartItems { get; set; }
         public Product()
         {

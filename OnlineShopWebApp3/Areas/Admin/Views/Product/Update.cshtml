@@ -1,46 +1,61 @@
 ﻿@model ProductViewModel
 
-<form class="needs-validation" asp-controller="Product" asp-action="Update">
-
 <div class="container-fluid">
+    <div class="row border-bottom align-self-center">
 
-    <div class="row justify-content-center">
-        <div class="col-4">
-            <div class="validation" asp-validation-summary="All"></div>
-        </div>
-    </div>
-    <br />
-
-    <div class="row pt-lg-5">
-        <div class="col-6">
-                <input type="hidden" name="ImagePath" value="@Model?.ImagePath" />
-                <img src=@Model?.ImagePath class="img-fluid" alt="Image of a product.">
+        <div class="col-6 border-right">
+            <input type="hidden" name="ImagePath" value="@Model?.ImagePath" />
+            <img src=@Model?.ImagePath class="img-fluid" alt="Image of a product.">
         </div>
 
-            <div class="form-row">
-                <div class="col-md-6">
-                    <label asp-for="Name" >New name</label><br />
-                    <input asp-for="Name" type="text" class="form-control" placeholder="@Model?.Name" />
-                </div>
-                <div class="col-md-6">
-                    <label asp-for="Description">New description</label><br />
-                    <input asp-for="Description" type="text" class="form-control" placeholder="@Model?.Description" />
-                </div>
-                <div class="col-md-6">
-                    <label asp-for="Cost">New cost</label><br />
-                    <input asp-for="Cost" type="text" class="form-control" placeholder="@Model?.Cost" />
-                </div>
-            </div>
+        <div class="col-6 m-0 p-0 border-top-0 align-self-center">
+            <div class="row justify-content-center">
+                <form class="needs-validation" asp-controller="Product" asp-action="Update">
 
-            <div class="row pt-lg-5">
-                <div class="col-6">
-                    <div>
-                        <input type="hidden" name="Id" value="@Model?.Id" />
-                        <button type="submit" class="btn btn-light  btn-block" asp-controller="Product" asp-action="Update" asp-route-productId="@Model.Id">Update</button>
+
+                    <div class="row justify-content-center">
+                        <div class="col-4">
+                            <div class="validation" asp-validation-summary="All"></div>
+                        </div>
                     </div>
-                </div>
+                    <br />
+
+                    <div class="row pt-sm-5 p-5 m-5">
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <label asp-for="Name">New name</label><br />
+                                <input asp-for="Name" type="text" class="form-control" placeholder="@Model?.Name" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Material">New material</label><br />
+                                <input asp-for="Material" type="text" class="form-control" placeholder="@Model?.Material" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Size">New Size</label><br />
+                                <input asp-for="Size" type="text" class="form-control" placeholder="@Model?.Size" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Cost">New cost</label><br />
+                                <input asp-for="Cost" type="text" class="form-control" placeholder="@Model?.Cost" />
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Category">New category</label><br />
+                                <input asp-for="Category" type="text" class="form-control" placeholder="@Model?.Category" />
+                            </div>
+                        </div>
+                        <div class="row pt-sm-5 p-5 m-5">
+                            <div>
+                                <input type="hidden" name="Id" value="@Model?.Id" />
+                                <button type="submit" class="btn btn-light  btn-block" asp-controller="Product" asp-action="Update" asp-route-productId="@Model.Id">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
             </div>
-      
+        </div>
+
+        
     </div>
 </div>
-</form>
+

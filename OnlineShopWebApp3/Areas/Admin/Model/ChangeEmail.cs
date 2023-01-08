@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace OnlineShopWebApp3.Areas.Admin.Model
 {
@@ -13,5 +14,7 @@ namespace OnlineShopWebApp3.Areas.Admin.Model
         [Required(ErrorMessage = "Please enter Email.")]
         [Compare("Email", ErrorMessage = "Emails don't match.")]
         public string RepeatEmail { get; set; }
+        public List<UserViewModel> Users { get; set; }
+
     }
 }

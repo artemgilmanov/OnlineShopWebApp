@@ -1,51 +1,53 @@
 ﻿@model List<ProductViewModel>
 
-<div class="container-fluid pt-3">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row flex-row border-bottom align-self-center">
 
-        <div class="col-3">
-            @await Html.PartialAsync("AdminPanel")
+        <div class="flex-column col-sm m-0 p-0 border-top-0 border-right ">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col">Material</th>
+                        <th scope="col">Size</th>
+                        <th scope="col">Category</th>
+
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <th scope="row">@(i+1)</th>
+                            <td>@Model[i].Name</td>
+                            <td>@Model[i].Cost</td>
+                            <td>@Model[i].Material</td>
+                            <td>@Model[i].Size</td>
+                            <td>@Model[i].Category</td>
+                            <td>
+                                <a class="text-dark" asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-productId="@Model[i].Id">Edit</a>
+                            </td>
+                            <td>
+                                <a class="text-dark" asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model[i].Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
-
-        <div class="col-3">
-                <div>
-                    <h5>List of Products</h5>
-                </div>
-
-                <div>
-                    <a class="text-dark" asp-area="Admin" asp-controller="Product" asp-action="Add">Add new Product</a>
-                </div>
-
-                <div>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Index</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Cost</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody >
-                            @for (int i=0; i<Model.Count;i++)
-                            {
-                                <tr>
-                                    <th scope="row">@(i+1)</th>
-                                    <td>@Model[i].Name</td>
-                                    <td>@Model[i].Cost</td>
-                                    <td>
-                                        <a class="text-dark" asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-productId="@Model[i].Id">Edit</a>
-                                    </td>
-                                    <td>
-                                        <a class="text-dark" asp-area="Admin" asp-controller="Product" asp-action="Delete" asp-route-productId="@Model[i].Id">Delete</a>
-                                    </td>
-                                </tr>
-                            }
-                           
-                        </tbody>
-                    </table>
-                </div>
+       
+        <div class="flex-column col-sm m-0 p-0 border-top-0 align-self-center">
+            <div class="row justify-content-center">
+                <a class="text-dark" asp-area="Admin" asp-controller="Product" asp-action="Add">Add new Product</a>
             </div>
         </div>
+
+        <div class="flex-column col-sm-2 p-0 border-left">
+            @await Html.PartialAsync("_AdminPanel")
+        </div>
+    </div>
     </div>

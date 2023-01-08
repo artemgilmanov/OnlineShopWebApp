@@ -33,7 +33,7 @@ namespace OnlineShopWebApp3
 
             services.ConfigureApplicationCookie(options =>
             {
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
                 options.LoginPath = "/Account/Authorization/Login";
                 options.LogoutPath = "/Account/Authorization/Logout";
                 options.Cookie = new CookieBuilder

@@ -11,5 +11,6 @@ namespace OnlineShop.Db
         List<Product> GetAll();
         Product TryGetById(Guid productId);
         void Update(Product productToReplaceWith);
+        List<Product> TryGetByCategory(string category);
     }
 }

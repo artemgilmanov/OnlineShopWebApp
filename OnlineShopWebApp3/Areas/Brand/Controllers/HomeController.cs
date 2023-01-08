@@ -22,5 +22,11 @@ namespace OnlineShopWebApp3.Areas.Brand.Controllers
             var products = _productsRepository.GetAll();
             return View(products.ToProductViewModels());
         }
+
+        public IActionResult Filter(string category)
+        {
+            var products = _productsRepository.TryGetByCategory(category);
+            return View(products.ToProductViewModels());
+        }
     }
 }

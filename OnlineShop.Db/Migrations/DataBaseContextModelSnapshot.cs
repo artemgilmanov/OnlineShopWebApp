@@ -16,7 +16,7 @@ namespace OnlineShop.Db.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.6")
+                .HasAnnotation("ProductVersion", "5.0.7")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("OnlineShop.Db.Model.Cart", b =>
@@ -117,16 +117,22 @@ namespace OnlineShop.Db.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("Category")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Cost")
                         .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Material")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Size")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -136,73 +142,73 @@ namespace OnlineShop.Db.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d9903536-8872-47e5-8915-14d25e1b8fe5"),
+                            Id = new Guid("c8d9fe44-6197-4bbb-9db3-b9b5b7acf5e4"),
                             Cost = 0m,
                             ImagePath = "/images/product1.png"
                         },
                         new
                         {
-                            Id = new Guid("df118537-7451-43d5-a2ec-82400b9bf2e2"),
+                            Id = new Guid("3b03a6fc-7633-44f8-bc93-dc61d60aadc0"),
                             Cost = 0m,
                             ImagePath = "/images/product2.png"
                         },
                         new
                         {
-                            Id = new Guid("e55bb71b-17c9-4e60-92dc-d616e350d773"),
+                            Id = new Guid("50722c67-8c9e-4987-bf8f-f9438fa60f2b"),
                             Cost = 0m,
                             ImagePath = "/images/product3.png"
                         },
                         new
                         {
-                            Id = new Guid("b6e03337-352e-49c2-84a2-2ec616190248"),
+                            Id = new Guid("66084cb3-eee1-4efe-a11d-e41c2228f9f3"),
                             Cost = 0m,
                             ImagePath = "/images/product4.png"
                         },
                         new
                         {
-                            Id = new Guid("a83c8d84-f929-4119-a8ab-137dfec3654d"),
+                            Id = new Guid("50f8741a-afdd-43de-a55d-b2d767f7e57f"),
                             Cost = 0m,
                             ImagePath = "/images/product5.png"
                         },
                         new
                         {
-                            Id = new Guid("b52b1c28-4b81-4f81-8839-fc4e017eda30"),
+                            Id = new Guid("14dd502f-a52a-4170-8888-14ff363d8a35"),
                             Cost = 0m,
                             ImagePath = "/images/product6.png"
                         },
                         new
                         {
-                            Id = new Guid("4c4e9d04-f200-4ddc-9251-4bc4ecd3f86a"),
+                            Id = new Guid("a002ea0a-adca-4a11-b6fc-ab409ee92440"),
                             Cost = 0m,
                             ImagePath = "/images/product7.png"
                         },
                         new
                         {
-                            Id = new Guid("38cbfabe-b5f4-43c5-ac34-f2d3f46a6962"),
+                            Id = new Guid("2f554b37-0a2b-402a-addd-5eeb7cb5278e"),
                             Cost = 0m,
                             ImagePath = "/images/product8.png"
                         },
                         new
                         {
-                            Id = new Guid("49a6e5f2-a388-4163-bec9-4ead3e829494"),
+                            Id = new Guid("6820e8a1-8457-4a6d-8632-e933af91475b"),
                             Cost = 0m,
                             ImagePath = "/images/product9.png"
                         },
                         new
                         {
-                            Id = new Guid("7b62cd0d-1f08-4f33-bc06-559d9d0fb7e5"),
+                            Id = new Guid("f63f23d1-ac88-415c-8a57-03270b553987"),
                             Cost = 0m,
                             ImagePath = "/images/product10.png"
                         },
                         new
                         {
-                            Id = new Guid("6ab8bc80-a1c8-4916-ba91-b53f9f42c011"),
+                            Id = new Guid("32072d0a-54f0-485d-8c3b-4ff195b3d01b"),
                             Cost = 0m,
                             ImagePath = "/images/product11.png"
                         },
                         new
                         {
-                            Id = new Guid("aa263bfe-875d-422f-a3c9-539e2c863f68"),
+                            Id = new Guid("61a27bea-256d-4d37-819e-46a0e11cedc6"),
                             Cost = 0m,
                             ImagePath = "/images/product12.png"
                         });

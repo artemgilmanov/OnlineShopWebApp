@@ -7,5 +7,14 @@
         public const string AdminRoleName = "Admin";
 
         public const string UserRoleName = "User";
+
+        public enum Category
+        {
+            cup,
+            mug,
+            teapot,
+            set,
+            bowl
+        }
     }
 }

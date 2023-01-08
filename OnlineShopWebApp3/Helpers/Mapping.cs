@@ -24,7 +24,9 @@ namespace OnlineShopWebApp3.Helpers
                     Id = product.Id,
                     Name = product.Name,
                     Cost = product.Cost,
-                    Description = product.Description,
+                    Material = product.Material,
+                    Size=product.Size,
+                    Category = product.Category,
                     ImagePath=product.ImagePath
                 };
         }

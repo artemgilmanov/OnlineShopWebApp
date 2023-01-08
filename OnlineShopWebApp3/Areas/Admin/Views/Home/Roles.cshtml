@@ -1,42 +1,41 @@
 ﻿@model List<RoleViewModel>
 
-<div class="container-fluid pt-3">
-    <div class="row">
+<div class="container-fluid">
+    <div class="row flex-row border-bottom align-self-center">
 
-        <div class="col-3">
-            @await Html.PartialAsync("AdminPanel")
-        </div>
-
-        <div class="col-3">
-    
-            <div>
-                  <a class="text-dark" asp-area="Admin" asp-controller="Role" asp-action="Add">Add new Role</a>
-            </div>
-
-            <div>
-                <table class="table table-hover">
-                    <thead>
+        <div class="flex-column col-sm m-0 p-0 border-top-0 border-right ">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Role</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Role</th>
-                            <th></th>
-                            <th></th>
+                            <th scope="row">@(i + 1)</th>
+                            <td>@Model[i].Name</td>
+                            <td>
+                                <a class="text-dark" asp-area="Admin" asp-controller="Role" asp-action="Delete" asp-route-name="@Model[i].Name">Delete</a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @for (int i = 0; i < Model.Count; i++)
-                        {
-                            <tr>
-                                <th scope="row">@(i + 1)</th>
-                                <td>@Model[i].Name</td>
-                                <td>
-                                    <a class="text-dark" asp-area="Admin" asp-controller="Role" asp-action="Delete" asp-route-name="@Model[i].Name">Delete</a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="flex-column col-sm m-0 p-0 border-top-0 align-self-center">
+            <div class="row justify-content-center">
+                <a class="text-dark" asp-area="Admin" asp-controller="Role" asp-action="Add">Add new Role</a>
             </div>
         </div>
-</div>
+
+        <div class="flex-column col-sm-2 p-0 border-left">
+            @await Html.PartialAsync("_AdminPanel")
+        </div>
+
+    </div>
 </div>

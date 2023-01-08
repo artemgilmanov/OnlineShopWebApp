@@ -23,17 +23,13 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
             _roleManager = roleManager;
         }
 
-        public IActionResult Details(string name)
-        {
-            var user = _userManager.FindByNameAsync(name).Result;
-            return View(user.ToUserViewModel());
-        }
-
         public IActionResult ChangePassword(string userName)
         {
+            var users = _userManager.Users.Select(x => x.ToUserViewModel()).ToList();
             var changePassword = new ChangePassword()
             {
-                UserName = userName
+                UserName = userName,
+                Users= users
             };
 
             return View(changePassword);
@@ -62,9 +58,11 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
 
         public IActionResult ChangeEmail(string userName)
         {
+            var users = _userManager.Users.Select(x => x.ToUserViewModel()).ToList();
             var changeEmail = new ChangeEmail()
             {
-                UserName = userName
+                UserName = userName,
+                Users= users
             };
 
             return View(changeEmail);
@@ -99,9 +97,9 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
             return RedirectToAction(nameof(HomeController.Users), "Home");
         }
 
-
         public IActionResult EditRights(string name)
         {
+            var users = _userManager.Users.Select(x => x.ToUserViewModel()).ToList();
             var user = _userManager.FindByNameAsync(name).Result;
             var userRoles = _userManager.GetRolesAsync(user).Result;
             var roles = _roleManager.Roles.ToList();
@@ -110,7 +108,8 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
             {
                 UserName = user.UserName,
                 UserRoles = userRoles.Select(x => new RoleViewModel { Name = x }).ToList(),
-                AllRoles = roles.Select(x => new RoleViewModel { Name = x.Name }).ToList()
+                AllRoles = roles.Select(x => new RoleViewModel { Name = x.Name }).ToList(),
+                Users = users
             };
 
             return View(model);

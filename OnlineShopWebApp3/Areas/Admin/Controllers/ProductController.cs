@@ -36,7 +36,9 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
             {
                 Name = newProduct.Name,
                 Cost = newProduct.Cost,
-                Description = newProduct.Description
+                Material = newProduct.Material,
+                Size = newProduct.Size,
+                Category= newProduct.Category
             };
 
             _productsRepository.Add(productDb);
@@ -62,7 +64,9 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
                 Id = proproductToReplaceWith.Id,
                 Name = proproductToReplaceWith.Name,
                 Cost = proproductToReplaceWith.Cost,
-                Description = proproductToReplaceWith.Description,
+                Material = proproductToReplaceWith.Material,
+                Size=proproductToReplaceWith.Size,
+                Category = proproductToReplaceWith.Category,
                 ImagePath = proproductToReplaceWith.ImagePath
             };
 

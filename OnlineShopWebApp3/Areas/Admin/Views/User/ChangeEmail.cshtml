@@ -1,41 +1,48 @@
 ﻿@model ChangeEmail
 
-<form class="needs-validation" asp-controller="User" asp-action="ChangePassword">
-
 <div class="container-fluid">
+    <div class="row flex-row border-bottom align-self-center">
 
-    <div class="row justify-content-center">
-        <div class="col-4">
-            <div class="validation" asp-validation-summary="All"></div>
+        <div class="flex-column col-sm m-0 p-0 border-top-0 border-right ">
+            @await Html.PartialAsync("_UsersTable", Model.Users)
+        </div>
+
+        <div class="flex-column col-sm m-0 p-0 border-top-0 align-self-center">
+            <div class="row justify-content-center pt-5">
+                    <p> Change email for  <strong> @Model.UserName </strong> </p>
+            </div>
+
+            <div class="row justify-content-center">
+                    <div class="validation" asp-validation-summary="All"></div>
+            </div>
+
+            <div class="row justify-content-center">
+                <form class="needs-validation" asp-controller="User" asp-action="ChangeEmail">
+                    <input type="hidden" name="UserName" value="@Model.UserName" />
+
+                    <div class="form-row">
+                        <label asp-for="Email">New E-mail</label><br />
+                        <input asp-for="Email" class="form-control" />
+                    </div>
+                    <div class="form-row">
+                        <label asp-for="RepeatEmail">Repeat new E-mail</label><br />
+                        <input asp-for="RepeatEmail" class="form-control" />
+                    </div>
+                    <br />
+
+                    <div class="row justify-content-center">
+                        <div>
+                            <button type="submit" class="btn btn-light btn-block" asp-area="Admin" asp-controller="User" asp-action="ChangeEmail"> Update </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="flex-column col-sm-2 p-0 border-left">
+            @await Html.PartialAsync("_AdminPanel")
         </div>
     </div>
-    <br />
-
-    <div class="row pt-lg-5">
-
-            <input type="hidden" name="UserName" value="@Model.UserName" />
-
-            <div class="form-row">
-                <div class="col-md-6">
-                    <label asp-for="Email">New E-mail</label><br />
-                    <input asp-for="Email" class="form-control" />
-                    <span asp-validation-for="Email"></span>
-                </div>
-                <div class="col-md-6">
-                    <label asp-for="RepeatEmail">Repeat new E-mail</label><br />
-                    <input asp-for="RepeatEmail" class="form-control" />
-                    <span asp-validation-for="RepeatEmail"></span>
-                </div>
-            </div>
-
-            <div class="row pt-lg-5">
-                <div class="col-6">
-                    <div>
-                        <button type="submit" class="btn btn-light  btn-block" asp-area="Admin" asp-controller="User" asp-action="ChangeEmail">Change E-mail</button>
-                    </div>
-                </div>
-            </div>
-      
-    </div>
 </div>
-</form>
+
+

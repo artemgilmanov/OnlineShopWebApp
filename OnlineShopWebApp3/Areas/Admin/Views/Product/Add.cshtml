@@ -1,47 +1,61 @@
 ﻿@model ProductViewModel
 
-<div class="container-fluid text-center">
-    <h3 class="display-4">Add new Product</h3>
-</div>
-<br />
+    <form class="needs-validation" asp-controller="Product" asp-action="Add">
 
-<form class="needs-validation" asp-controller="Product" asp-action="Add">
+        <div class="d-flex vFullscreen">
 
-    <div class="container-fluid">
+            <div class="container-fluid">
 
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <div class="validation" asp-validation-summary="All"></div>
-            </div>
-        </div>
-        <br />
+                <div class="row justify-content-center">
+                    <h3 class="display-4">Add new Product</h3>
+                </div>
+                <br />
 
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <label asp-for="Name" class="col-form-label">Name</label><br />
-                <input asp-for="Name" class="form-control" />
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <div class="validation" asp-validation-summary="All"></div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <label asp-for="Name" class="col-form-label">Name</label><br />
+                        <input asp-for="Name" class="form-control" />
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <label asp-for="Cost">Cost</label><br />
+                        <input asp-for="Cost" class="form-control" />
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <label asp-for="Material">Material</label><br />
+                        <input asp-for="Material" class="form-control" />
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <label asp-for="Size">Size</label><br />
+                        <input asp-for="Size" class="form-control" />
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <label asp-for="Category">Category</label><br />
+                        <input asp-for="Category" class="form-control" />
+                    </div>
+                </div>
+                <br />
+
+                <div class="row justify-content-center">
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-light  btn-block" asp-area="Admin" asp-controller="Product" asp-action="Add">Add</button>
+                    </div>
+                </div>
+                <br />
+
             </div>
         </div>
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <label asp-for="Cost">Cost</label><br />
-                <input asp-for="Cost" class="form-control" />
-            </div>
-        </div>
-         <div class="row justify-content-center">
-    <div class="col-4">
-                <label asp-for="Description">Description</label><br />
-                <input asp-for="Description" class="form-control" />
-            </div>
-        </div>
-        
-        <br />
-        <div class="row justify-content-center">
-            <div class="col-4">
-                <button type="submit" class="btn btn-light  btn-block" asp-area="Admin" asp-controller="Product" asp-action="Add">Add</button>
-            </div>
-        </div>
-        <br />
-        
-    </div>
-</form>
+    </form>
