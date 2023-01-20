@@ -1,43 +1,53 @@
 ﻿@model ProductViewModel
 
 <div class="container-fluid">
-    <div class="row pt-lg-5">
-        <div class="col-6">
+    <div class="row">
+
+        <div class="col-6 border-right">
             <div class="card-img-overlay">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-6 border-r">
                         <div class="text-left">
-                            <a class="text-dark" asp-area="" asp-controller="Home" asp-action="Index"><strong>←</strong></a>
+                            <a class="text-dark h2" asp-area="" asp-controller="Home" asp-action="Index"><strong>←</strong></a>
                         </div>
                     </div>
                 </div>
             </div>
             <img src=@Model.ImagePath class="img-fluid" alt="Image of a product.">
         </div>
-        <div class="col-6">
-            <div>
-                <p>
-                    <strong>@Model.Name.ToUpper()</strong>
-                </p>
+
+        <div class="col-6 d-flex flex-column  justify-content-center">
+            
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div>
+                        <p>
+                            <strong>@Model.Name.ToUpper()</strong>
+                        </p>
+                    </div>
+
+                    <hr class="py-1">
+
+                    <div class="py-1">
+                        <p>
+                            <strong>Materials</strong><br />
+                            @Model.Material
+                        </p>
+                        <p>
+                            <strong>Size</strong><br />
+                            @Model.Size
+                        </p>
+                    </div>
+
+                    <div class=" row justify-content-center py-2">
+                        <a class="btn btn-light btn-block" role="button" asp-area="Account" asp-controller="Favourite" asp-action="AddToFavourite" asp-route-productId="@Model.Id">Add to Favourite</a>
+                    </div>
+
+                    <div class=" row justify-content-center">
+                        <a class="btn btn-light btn-block" role="button" asp-area="Account" asp-controller="Cart" asp-action="Add" asp-route-productId="@Model.Id">Add to Cart</a>
+                    </div>
                 </div>
-            <div>
-                <p>
-                    <strong>Materials</strong><br />
-                    @Model.Material</p>
-                <p>
-                    <strong>Size</strong><br />
-                    @Model.Size</p>
             </div>
-
-            <div>
-                <a class="btn btn-light" asp-area="" asp-controller="Home" asp-action="Index" role="button">Continue</a>
-            </div>
-
-            <div>
-                <a class="btn btn-light" role="button" asp-area="Account" asp-controller="Cart" asp-action="Add" asp-route-productId="@Model.Id" >Add</a>
-            </div>
+                
         </div>
-   
-    </div>
-
 </div>

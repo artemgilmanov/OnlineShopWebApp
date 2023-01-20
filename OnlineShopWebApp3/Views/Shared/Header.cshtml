@@ -25,17 +25,17 @@
                                 </a>
                                 <div class="dropdown-menu rounded-0" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Filter"
-                                       asp-route-category="@Constants.Category.cup">Cup</a>
+                                       asp-route-category="@Constants.Category.cup"> Cup </a>
                                     <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Filter"
-                                       asp-route-category="@Constants.Category.mug">Mug</a>
+                                       asp-route-category="@Constants.Category.mug"> Mug </a>
                                     <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Filter"
-                                       asp-route-category="@Constants.Category.teapot">Teapot</a>
+                                       asp-route-category="@Constants.Category.teapot"> Teapot </a>
                                     <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Filter"
-                                       asp-route-category="@Constants.Category.set">Set</a>
+                                       asp-route-category="@Constants.Category.set"> Set </a>
                                     <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Filter"
-                                       asp-route-category="@Constants.Category.bowl">Bowl</a>
+                                       asp-route-category="@Constants.Category.bowl"> Bowl </a>
                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Index">Clear</a>
+                                    <a class="dropdown-item" asp-area="Brand" asp-controller="Home" asp-action="Index"> All products </a>
                                 </div>
                             </div>
 
@@ -55,7 +55,6 @@
                 </div>
 
                 <div class="flex-column border-left">
-                  
                     @if (User.Identity.IsAuthenticated)
                     {
                         <a class="nav-link text-dark" asp-area="Account" asp-controller="Authorization" asp-action="Logout"> Logout </a>

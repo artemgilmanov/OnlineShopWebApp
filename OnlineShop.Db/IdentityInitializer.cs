@@ -9,6 +9,7 @@ namespace OnlineShop.Db
         {
             var adminEmail = "admin@gmail.com";
             var password = "_Aa123456";
+
             //var testUserEmail = "artemgilmanov@gmail.com";
             //var testUserPassword = "_qWer12356";
 

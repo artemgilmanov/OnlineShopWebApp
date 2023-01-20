@@ -23,18 +23,18 @@ namespace OnlineShop.Db
         {
             modelBuilder.Entity<Product>().HasData(new List<Product>()
             {
-                new Product(){ImagePath = "/images/product1.png"},
-                new Product(){ImagePath = "/images/product2.png"},
-                new Product(){ImagePath = "/images/product3.png"},
-                new Product(){ImagePath = "/images/product4.png"},
-                new Product(){ImagePath = "/images/product5.png"},
-                new Product(){ImagePath = "/images/product6.png"},
-                new Product(){ImagePath = "/images/product7.png"},
-                new Product(){ImagePath = "/images/product8.png"},
-                new Product(){ImagePath = "/images/product9.png"},
-                new Product(){ImagePath = "/images/product10.png"},
-                new Product(){ImagePath = "/images/product11.png"},
-                new Product(){ImagePath = "/images/product12.png"}
+                new Product(){ImagePath = "/images/products/product1.png"},
+                new Product(){ImagePath = "/images/products/product2.png"},
+                new Product(){ImagePath = "/images/products/product3.png"},
+                new Product(){ImagePath = "/images/products/product4.png"},
+                new Product(){ImagePath = "/images/products/product5.png"},
+                new Product(){ImagePath = "/images/products/product6.png"},
+                new Product(){ImagePath = "/images/products/product7.png"},
+                new Product(){ImagePath = "/images/products/product8.png"},
+                new Product(){ImagePath = "/images/products/product9.png"},
+                new Product(){ImagePath = "/images/products/product10.png"},
+                new Product(){ImagePath = "/images/products/product11.png"},
+                new Product(){ImagePath = "/images/products/product12.png"}
             });
         }
     }
