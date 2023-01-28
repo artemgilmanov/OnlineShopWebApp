@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32811.315
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32802.440
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShopWebApp3", "OnlineShopWebApp3\OnlineShopWebApp3.csproj", "{C50DCCE6-7418-4C9E-B556-E6FE9B6D38F8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShopWebApp", "OnlineShopWebApp\OnlineShopWebApp.csproj", "{C50DCCE6-7418-4C9E-B556-E6FE9B6D38F8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineShop.Db", "OnlineShop.Db\OnlineShop.Db.csproj", "{0D3DAF4B-4079-457E-864B-B5A54B95A3D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineShop.Db", "OnlineShop.Db\OnlineShop.Db.csproj", "{0D3DAF4B-4079-457E-864B-B5A54B95A3D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

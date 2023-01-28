@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
 using OnlineShopWebApp3.Areas.Account.Model;
 using OnlineShopWebApp3.Areas.Brand.Controllers;
-using System;
-using System.Linq;
 
 namespace OnlineShopWebApp3.Areas.Account.Controllers
 {

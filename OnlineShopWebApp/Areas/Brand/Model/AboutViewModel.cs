@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace OnlineShopWebApp3.Areas.Brand.Model
+﻿namespace OnlineShopWebApp3.Areas.Brand.Model
 {
     public class AboutViewModel
     {

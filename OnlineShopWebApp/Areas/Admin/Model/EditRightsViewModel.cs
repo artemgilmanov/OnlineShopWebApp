@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace OnlineShopWebApp3.Areas.Admin.Model
 {
@@ -11,7 +8,5 @@ namespace OnlineShopWebApp3.Areas.Admin.Model
         public List<RoleViewModel> UserRoles { get; set; }
         public List<RoleViewModel> AllRoles { get; set; }
         public List<UserViewModel> Users { get; set; }
-
-
     }
 }

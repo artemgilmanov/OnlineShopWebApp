@@ -14,7 +14,6 @@ namespace OnlineShop.Db
         {
             _dataBaseContext = dataBaseContext;
         }
-        //private static List<Order> Orders { get; } = new List<Order>();
 
         public void Add(Order order)
         {

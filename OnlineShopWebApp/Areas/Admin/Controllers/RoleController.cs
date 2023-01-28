@@ -49,18 +49,8 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
                     ModelState.AddModelError("", error.Description);
                 }
             }
-            //if (_roleManager.TryGetByName(role.Name) != null)
-            //{
-            //    ModelState.AddModelError("", "This role already exists.");
-            //}
-            //if (ModelState.IsValid)
-            //{
-            //    _roleManager.Add(role);
-            //    return RedirectToAction("Roles", "Home", new { area = "Admin" });
-            //}
 
             return View(role);
-            
         }
     }
 }

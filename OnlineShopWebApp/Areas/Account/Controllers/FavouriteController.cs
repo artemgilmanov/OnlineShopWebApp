@@ -55,7 +55,6 @@ namespace OnlineShopWebApp3.Areas.Account.Controllers
         {
             _favoriteRepository.Remove(productId, Constants.UserId);
             return RedirectToAction("Index", "Cart");
-
         }
     }
 }

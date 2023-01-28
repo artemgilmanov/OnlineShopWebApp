@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Db;
 using OnlineShop.Db.Model;
@@ -27,7 +26,6 @@ namespace OnlineShopWebApp3.Areas.Admin.Controllers
             return View(order.ToOrderViewModel()) ;
         }
 
-        //pass using method
         public IActionResult UpdateOrderStatus(Guid orderId, OrderStatusViewModel status)
         {
            _ordersRepository.UpdateOrderStatus(orderId, (OrderStatus)(int)status);
