@@ -8,11 +8,11 @@ All the images have been taken from the Instagram of Valerie Chernysheva:
 
 ### The main page, Filter, and Product  Card
 
-![mainPageFilterCard_230129_LLLLLQ.gif](OnlineShop/documentation/mainPageFilterCard_230129_LLLLLQ.gif)
+![mainPageFilterCard_230129_LLLLLQ.gif](documentation/mainPageFilterCard_230129_LLLLLQ.gif)
 
 ### Registration, Authorisation and Admin Pannel
 
-![regAuthorAdmPan_230129.gif](OnlineShop/documentation/regAuthorAdmPan_230129.gif)
+![regAuthorAdmPan_230129.gif](documentation/regAuthorAdmPan_230129.gif)
 
 ### Database
 
