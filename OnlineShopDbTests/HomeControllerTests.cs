@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Mvc;
+using Moq;
+using OnlineShop.Db;
+using OnlineShopWebApp3.Areas.Brand.Controllers;
 using System;
 using Xunit;
 
@@ -15,7 +19,7 @@ namespace OnlineShopDbTests
         }
 
         [Fact]
-        public void Index_ActionExeutesViewForIndex()
+        public void Index_ActionExecutes_ViewForIndex()
         {
             var result = _controller.Index() as ViewResult;
             Assert.IsType<ViewResult>(result);
