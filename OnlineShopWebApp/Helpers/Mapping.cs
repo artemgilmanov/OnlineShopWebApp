@@ -17,6 +17,7 @@ namespace OnlineShopWebApp3.Helpers
             };
             return productsViewModels;
         }
+
         public static ProductViewModel ToProductViewModel(this Product product)
         {
             return new ProductViewModel()
