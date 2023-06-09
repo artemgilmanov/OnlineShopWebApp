@@ -55,6 +55,7 @@ namespace OnlineShop.Db
             productToUpdate.Material = productToReplaceWith.Material;
             productToUpdate.Size = productToReplaceWith.Size;
             productToUpdate.Category = productToReplaceWith.Category;
+
             _dataBaseContext.SaveChanges();
         }
 

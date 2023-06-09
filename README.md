@@ -20,7 +20,7 @@ All objects are stored in **Microsoft SQL Server 2019**. The database has two co
 
 ### WebApp
 
-The web app is based on Model-View-Controller **(MVC)** pattern. Models between the database and view are mapped manually. All views use **Bootstrap**. The app is separated into three areas: Admin, User, and Brand. 
+The web app is based on Model-View-Controller **(MVC)** pattern. Models between the database and view are mapped manually. All views use **Razor pages** and **Bootstrap**. The app is separated into three areas: Admin, User, and Brand. 
 
 ### Users
 

@@ -45,7 +45,6 @@ namespace OnlineShop.Db
                 order.Status = newStatus;
             }
             _dataBaseContext.SaveChanges();
-
         }
     }
 }

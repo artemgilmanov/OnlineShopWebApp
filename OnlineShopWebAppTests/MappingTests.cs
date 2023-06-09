@@ -29,7 +29,15 @@ namespace OnlineShopWebAppTests
             {
                 Id = id,
                 Name = name,
-                CartItems = new List<CartItem>() { new CartItem() { Id = id, Amount = 1, Product = productDb } },
+                CartItems = new List<CartItem>() 
+                {
+                    new CartItem() 
+                    {
+                        Id = id,
+                        Amount = 1,
+                        Product = productDb
+                    }
+                },
                 ImagePath = imagePath,
                 Size = size,
                 Category = category,

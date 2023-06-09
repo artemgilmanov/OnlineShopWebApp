@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Moq;
 using OnlineShop.Db;
 using OnlineShopWebApp3.Areas.Brand.Controllers;
-using System;
 using Xunit;
 
 namespace OnlineShopDbTests

@@ -38,7 +38,6 @@ namespace OnlineShop.Db
                         Id=Guid.NewGuid(),
                         Product = product,
                         Amount =1,
-                        //Cart=newCart
                     }
                 };
 
@@ -58,7 +57,6 @@ namespace OnlineShop.Db
                     {
                         Product = product,
                         Amount = 1,
-                        //Cart = existingCart
                     });
                 }
             }

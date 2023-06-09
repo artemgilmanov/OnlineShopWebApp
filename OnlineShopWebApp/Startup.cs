@@ -26,7 +26,7 @@ namespace OnlineShopWebApp3
         {
             string connection = Configuration.GetConnectionString("online_shop");                   //get connection string from the configuration file
             services.AddDbContext<DataBaseContext>(options => options.UseSqlServer(connection));    // adding context as a service for products
-            services.AddDbContext<IdentityContext>(options => options.UseSqlServer(connection));    // adding context new context for Identity
+            services.AddDbContext<IdentityContext>(options => options.UseSqlServer(connection));    // adding new context for Identity
 
             services.AddIdentity<User, IdentityRole>() // user type and role
                 .AddEntityFrameworkStores<IdentityContext>(); // database type to store
